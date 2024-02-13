@@ -1,5 +1,6 @@
 # Cinema Booking Application
 
+**Tutorial for using spring with react:** https://www.baeldung.com/spring-boot-react-crud
 
 ## Start Spring Server
 - Ensure Maven is downloaded on your machine
