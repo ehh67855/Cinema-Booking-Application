@@ -28,6 +28,11 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 			<optional>true</optional>
@@ -62,6 +67,15 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+			<!-- This little plugin perform multiple steps:
+			The install-node-and-npm command will install node.js and its package management tool, npm, into the target folder. (This ensures the binaries are NOT pulled under source control and can be cleaned out with clean).
+			The npm command will execute the npm binary with the provided argument (install). This installs the modules defined in package.json.
+			The webpack command will execute webpack binary, which compiles all the JavaScript code based on webpack.config.js.
+			-->
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
