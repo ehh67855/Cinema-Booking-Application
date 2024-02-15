@@ -33,8 +33,6 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    //ConstraintViolationException is thrown if empty string or null
-    @NotBlank(message = "Title is required")
     private String title;
 
     private String description;

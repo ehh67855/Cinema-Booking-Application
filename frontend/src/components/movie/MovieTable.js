@@ -23,8 +23,8 @@ function MovieTable({ movies }) {
   return (
     <div>
       <h2>Movie Table</h2>
-      <table>
-        <thead>
+      <table className="table">
+        <thead className="thead-dark">
           <tr>
             <th>Title</th>
             <th>Description</th>
@@ -43,10 +43,10 @@ function MovieTable({ movies }) {
               <td>{movie.director}</td>
               <td>{movie.synopsis}</td>
               <td>
-                <img src={movie.trailerPictureURL} alt="Trailer" style={{ width: '100px' }} />
+                <img src={movie.trailerPictureURL} alt="Trailer" className="img-thumbnail" style={{ width: '100px' }} />
               </td>
               <td>
-                <video controls src={movie.trailerVideoURL} style={{ width: '100px' }} />
+                <video controls src={movie.trailerVideoURL} className="img-thumbnail" style={{ width: '100px' }} />
               </td>
               <td>{movie.rating}</td>
             </tr>

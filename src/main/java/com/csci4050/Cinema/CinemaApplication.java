@@ -28,6 +28,7 @@ public class CinemaApplication {
 	@Bean
 	CommandLineRunner run(@Autowired MovieRepository movieRepo) {
 		return (args) -> {
+			movieRepo.deleteAll();
 			MovieTime movieTime1 = new MovieTime(1L, LocalDate.of(2024,2,13), LocalTime.of(2,20,0));
 			MovieTime movieTime2 = new MovieTime(2L, LocalDate.of(2024,2,13), LocalTime.of(2,20,0));
 			Review review1 = new Review(1L,1,"author","content");
@@ -35,18 +36,16 @@ public class CinemaApplication {
 			Movie movie = new Movie(
 				1L,
 				"The Lion King",
-				"story about lion",
-				"JJ Abrams",
-				"The lion does stuff",
-				"trailer picture",
-				"trailer video",
+				"description",
+				"Roger Allers",
+				"This Disney animated feature follows the adventures of the young lion Simba (Jonathan Taylor Thomas), the heir of his father, Mufasa (James Earl Jones).",
+				"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRpGOeTdpPET8OvEtjBBg03Wze_EZKu61WNaK4mxfoVcPZmZEN6",
+				"https://www.youtube.com/watch?v=7TavVZMewpY",
 				List.of(review1, review2),
 				Rating.G,
 				List.of(movieTime1,movieTime2)
 			);
-
 			movieRepo.save(movie);
-
 		};
 	}
 

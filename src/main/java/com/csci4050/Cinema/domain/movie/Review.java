@@ -18,7 +18,7 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private int rating = 0;
+    private int rating;
     private String author;
     private String reviewContent;
 }
