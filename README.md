@@ -1,6 +1,11 @@
 # Cinema Booking Application
-<<<<<<< HEAD
+<<<<<<< HEAD -> Main
 =======
+
+## Dependencies
+```
+npm i -D react-router-dom
+```
 
 **Tutorial for using spring with react:** https://www.baeldung.com/spring-boot-react-crud
 
