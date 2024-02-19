@@ -2,7 +2,13 @@
 <<<<<<< HEAD -> Main
 =======
 
+## Figma
+```
+https://www.figma.com/file/3wiU69KJUvFirbdDpds3Z4/Cinema-E-Booking-System?type=design&node-id=0-1&mode=design&t=HPdQ457wtR0blHfs-0
+```
+
 ## Dependencies
+**Add any dependencies you added to this part of the readme**
 ```
 npm i -D react-router-dom
 ```
