@@ -11,6 +11,7 @@ https://www.figma.com/file/3wiU69KJUvFirbdDpds3Z4/Cinema-E-Booking-System?type=d
 **Add any dependencies you added to this part of the readme**
 ```
 npm i -D react-router-dom
+npm install react-icons --save
 ```
 
 **Tutorial for using spring with react:** https://www.baeldung.com/spring-boot-react-crud
