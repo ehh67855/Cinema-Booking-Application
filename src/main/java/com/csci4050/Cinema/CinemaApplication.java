@@ -21,6 +21,8 @@ import java.util.List;
 @SpringBootApplication
 public class CinemaApplication {
 
+	private int NUM_MOVIES = 10;
+
 	public static void main(String[] args) {
 		SpringApplication.run(CinemaApplication.class, args);
 	}
@@ -28,25 +30,36 @@ public class CinemaApplication {
 	@Bean
 	CommandLineRunner run(@Autowired MovieRepository movieRepo) {
 		return (args) -> {
-			movieRepo.deleteAll();
-			MovieTime movieTime1 = new MovieTime(1L, LocalDate.of(2024,2,13), LocalTime.of(2,20,0));
-			MovieTime movieTime2 = new MovieTime(2L, LocalDate.of(2024,2,13), LocalTime.of(2,20,0));
-			Review review1 = new Review(1L,1,"author","content");
-			Review review2 = new Review(2L,4,"author","content");
-			Movie movie = new Movie(
-				1L,
-				"The Lion King",
-				"description",
-				"Roger Allers",
-				"This Disney animated feature follows the adventures of the young lion Simba (Jonathan Taylor Thomas), the heir of his father, Mufasa (James Earl Jones).",
-				"https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRpGOeTdpPET8OvEtjBBg03Wze_EZKu61WNaK4mxfoVcPZmZEN6",
-				"https://www.youtube.com/watch?v=7TavVZMewpY",
-				List.of(review1, review2),
-				Rating.G,
-				List.of(movieTime1,movieTime2)
-			);
-			movieRepo.save(movie);
+			for (int i = 0 ; i < NUM_MOVIES ; i++) {
+				createNewMovie(movieRepo);
+			}
 		};
+	}
+
+	private void createNewMovie(MovieRepository movieRepo) {
+			MovieTime movieTime1 = new MovieTime();
+			movieTime1.setDate(LocalDate.of(2024,2,13));
+			movieTime1.setTime(LocalTime.of(2,20,0));
+			MovieTime movieTime2 = new MovieTime();
+			movieTime2.setDate(LocalDate.of(2024,2,13));
+			movieTime2.setTime(LocalTime.of(2,20,0));
+			Review review1 = new Review();
+			review1.setAuthor("author");
+			review1.setReviewContent("content");
+			Review review2 = new Review();
+			review2.setAuthor("author");
+			review2.setReviewContent("content");
+			Movie movie = new Movie();
+			movie.setTitle("The Lion King");
+			movie.setDescription("description");
+			movie.setDirector("Roger Allers");
+			movie.setSynopsis("This Disney animated feature follows the adventures of the young lion Simba (Jonathan Taylor Thomas), the heir of his father, Mufasa (James Earl Jones).");
+			movie.setTrailerPictureURL("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRpGOeTdpPET8OvEtjBBg03Wze_EZKu61WNaK4mxfoVcPZmZEN6");
+			movie.setTrailerVideoURL("https://www.youtube.com/watch?v=7TavVZMewpY");
+			movie.setReviews(List.of(review1, review2));
+			movie.setRating(Rating.G);
+			movie.setShowings(List.of(movieTime1,movieTime2));
+			movieRepo.save(movie);
 	}
 
 }

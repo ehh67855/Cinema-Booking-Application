@@ -1,5 +1,7 @@
 package com.csci4050.Cinema.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,10 @@ public class MovieService {
 
     public Iterable<Movie> getAllMovies() {
         return movieRepository.findAll();
+    }
+
+    public Optional<Movie> getMovie(Long id) {
+        return movieRepository.findById(id);
     }
     
 }

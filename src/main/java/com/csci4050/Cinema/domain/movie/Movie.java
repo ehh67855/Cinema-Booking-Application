@@ -45,6 +45,8 @@ public class Movie {
 
     private String trailerVideoURL;
 
+    private Boolean comingSoon;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_id")
     private List<Review> reviews = new ArrayList<Review>();

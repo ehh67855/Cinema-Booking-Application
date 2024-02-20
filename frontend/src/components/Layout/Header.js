@@ -1,9 +1,10 @@
 import React from "react";
+import './Layout.css'
 
 function Header() {
     return (
         <header>
-            Header
+            Cinema E-Booking System
         </header>
     );
 }
