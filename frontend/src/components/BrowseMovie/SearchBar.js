@@ -18,7 +18,7 @@ function SearchBar({onSearch}) {
             class="btn btn-outline-primary" 
             data-mdb-ripple-init>search
         </button>
-\        </div>
+        </div>
     );
 }
 

@@ -31,15 +31,9 @@ public class MovieController {
     @GetMapping("/get-movie/")
     public ResponseEntity<Movie> getMovie(@RequestParam Long id) {
         Optional<Movie> optionalMovie = movieService.getMovie(id);
-        System.out.println("endpoint reached");
         return optionalMovie
             .map(movie -> ResponseEntity.ok(movie))
             .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @GetMapping("/test")
-    public String testEndpoint() {
-        return "Test endpoint is working";
     }
 
 

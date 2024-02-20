@@ -47,6 +47,8 @@ public class Movie {
 
     private Boolean comingSoon;
 
+    private Integer numStars;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "movie_id")
     private List<Review> reviews = new ArrayList<Review>();

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
+import './MovieDetails.css';
 function MovieDetails() {
   const { id } = useParams();
   const [movie, setMovie] = useState(null);
@@ -30,7 +30,6 @@ function MovieDetails() {
       <img src={movie.trailerPictureURL} alt={`Trailer for ${movie.title}`} />
       <p><strong>Director:</strong> {movie.director}</p>
       <p><strong>Synopsis:</strong> {movie.synopsis}</p>
-      {/* Render other movie details as needed */}
     </div>
   ) : (
     <div>Movie not found.</div>

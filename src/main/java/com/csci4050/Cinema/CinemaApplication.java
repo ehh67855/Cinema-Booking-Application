@@ -59,6 +59,7 @@ public class CinemaApplication {
 			movie.setReviews(List.of(review1, review2));
 			movie.setRating(Rating.G);
 			movie.setShowings(List.of(movieTime1,movieTime2));
+			movie.setNumStars(4);
 			movieRepo.save(movie);
 	}
 

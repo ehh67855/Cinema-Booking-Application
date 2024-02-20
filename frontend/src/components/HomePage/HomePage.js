@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using React Router for navigation
-import './HomePage.css'; // Your CSS file for styling
+import { Link } from 'react-router-dom';
+import './HomePage.css'; 
 
 function HomePage() {
   return (
