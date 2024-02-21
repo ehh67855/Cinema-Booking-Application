@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Movie from "./MovieCard";
+import Movie from "../MovieCard/MovieCard";
 
 
 function MoviesContainer({movies}) {
@@ -7,11 +7,10 @@ function MoviesContainer({movies}) {
 
     return (
         <>
-        <div className="container"> {/* Bootstrap container */}
-            <h2>Movies List</h2>
-            <div className="row"> {/* Bootstrap row */}
+        <div className="container">
+            <div className="row">
                 {movies.map((movie) => (
-                <div className="col-md-4" key={movie.id}> {/* Bootstrap column */}
+                <div className="col-md-4" key={movie.id}>
                     <Movie movie={movie} />
                 </div>
                 ))}

@@ -21,7 +21,7 @@ import java.util.List;
 @SpringBootApplication
 public class CinemaApplication {
 
-	private int NUM_MOVIES = 10;
+	private int NUM_MOVIES = 9;
 
 	public static void main(String[] args) {
 		SpringApplication.run(CinemaApplication.class, args);
@@ -56,10 +56,11 @@ public class CinemaApplication {
 			movie.setSynopsis("This Disney animated feature follows the adventures of the young lion Simba (Jonathan Taylor Thomas), the heir of his father, Mufasa (James Earl Jones).");
 			movie.setTrailerPictureURL("https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRpGOeTdpPET8OvEtjBBg03Wze_EZKu61WNaK4mxfoVcPZmZEN6");
 			movie.setTrailerVideoURL("https://www.youtube.com/watch?v=7TavVZMewpY");
+			movie.setCategory("Animated");
 			movie.setReviews(List.of(review1, review2));
 			movie.setRating(Rating.G);
 			movie.setShowings(List.of(movieTime1,movieTime2));
-			movie.setNumStars(4);
+			movie.setNumStars(3);
 			movieRepo.save(movie);
 	}
 

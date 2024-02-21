@@ -3,8 +3,8 @@ import { Routes, Route } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import NoPage from './components/NoPage';
 import Layout from './components/Layout/Layout';
-import MovieBrowse from './components/BrowseMovie/MovieBrowse';
-import MovieDetails from './components/ViewMovie/MovieDetails';
+import MovieBrowse from './components/BrowseMovie/MovieBrowse/MovieBrowse';
+import MovieDetails from './components/ViewMovie/MovieDetails/MovieDetails';
 
 function App() {
   return (

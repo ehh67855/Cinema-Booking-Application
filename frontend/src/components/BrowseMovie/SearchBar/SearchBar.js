@@ -1,23 +1,24 @@
 import React from "react";
 import { useState } from "react";
+import './SearchBar.css';
 
-function SearchBar({onSearch}) {
+function SearchBar(props) {
 
     return (
         <div class="input-group">
         <input
-            type="search" 
+            type={props.type == undefined ? "search" : props.type}
             class="form-control rounded" 
-            placeholder="Search" 
+            placeholder={props.placeholder}
             aria-label="Search" 
             aria-describedby="search-addon" 
-            onChange = {(e) => onSearch(e.target.value)}
+            onChange = {(e) => props.onSearch(e.target.value)}
         />
-        <button
+        {/* <button
             type="button" 
             class="btn btn-outline-primary" 
             data-mdb-ripple-init>search
-        </button>
+        </button> */}
         </div>
     );
 }
