@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./AdminNewMovieForm.css"
 
 const AdminNewMovieForm = () => {
     const [enteredMovieTitle, setEnteredMovieTitle] = useState('');
