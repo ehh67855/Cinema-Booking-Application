@@ -78,6 +78,19 @@ const EditMovie = () => {
     const submitHandler = (event) => {
         event.preventDefault();
 
+        const enteredMovie = {
+            title: enteredMovieTitle,
+            category: enteredCategory,
+            cast: enteredCast,
+            director: enteredDirector,
+            producer: enteredProducer,
+            synopsis: enteredSynopsis,
+            trailerPictureURL: enteredTrailerPictureURL,
+            trailerVideoURL: enteredTrailerVideoURL,
+            rating: enteredRating,
+            datetime: enteredDatetime
+        }
+
         setEnteredMovieTitle('');
         setEnteredCategory('');
         setEnteredCast('');
@@ -162,7 +175,7 @@ const EditMovie = () => {
             value={enteredDatetime}
             onChange={datetimeChangeHandler}
             />
-            <button type="submit">Add Movie</button>
+            <button type="submit">Confirm</button>
         </form>
     );
 }

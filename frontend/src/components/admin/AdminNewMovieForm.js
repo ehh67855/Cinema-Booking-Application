@@ -54,6 +54,19 @@ const AdminNewMovieForm = () => {
 
     const submitHandler = (event) => {
         event.preventDefault();
+        
+        const enteredMovie = {
+            title: enteredMovieTitle,
+            category: enteredCategory,
+            cast: enteredCast,
+            director: enteredDirector,
+            producer: enteredProducer,
+            synopsis: enteredSynopsis,
+            trailerPictureURL: enteredTrailerPictureURL,
+            trailerVideoURL: enteredTrailerVideoURL,
+            rating: enteredRating,
+            datetime: enteredDatetime
+        }
 
         setEnteredMovieTitle('');
         setEnteredCategory('');
