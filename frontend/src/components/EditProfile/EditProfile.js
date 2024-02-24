@@ -10,6 +10,7 @@ function EditProfile() {
   const [cardCVV, setCardCVV] = useState('');
   const [shippingAddress, setShippingAddress] = useState('');
   const [city, setCity] = useState('');
+const [cardType, setCardType] = useState('');
   const [zipCode, setZipCode] = useState('');
 
   useEffect(() => {
@@ -66,6 +67,15 @@ function EditProfile() {
                 type="text"
                 id="cardNumber"
                 value={cardNumber}
+                onChange={(e) => setCardNumber(e.target.value)}
+            />
+            </div>
+            <div className="input-group">
+            <label htmlFor="cardType">Card Type</label>
+            <input
+                type="text"
+                id="cardType"
+                value={cardType}
                 onChange={(e) => setCardNumber(e.target.value)}
             />
             </div>

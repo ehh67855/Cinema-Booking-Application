@@ -15,6 +15,7 @@ function Signup() {
   const [shippingAddress, setShippingAddress] = useState('');
   const [city, setCity] = useState('');
   const [zipCode, setZipCode] = useState('');
+  const [cardType, setCardType] = useState('');
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -61,6 +62,15 @@ function Signup() {
             value={cardNumber}
             onChange={(e) => setCardNumber(e.target.value)}
         />
+        </div>
+        <div className="input-group">
+            <label htmlFor="cardType">Card Type</label>
+            <input
+                type="text"
+                id="cardType"
+                value={cardType}
+                onChange={(e) => setCardNumber(e.target.value)}
+            />
         </div>
         <div className="input-group">
         <label htmlFor="cardExpiry">Expiry Date</label>
