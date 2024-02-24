@@ -7,14 +7,16 @@ import './Checkout.css';
 
 const Checkout = () => {
     return (
-        <div>
+        <div id="checkoutPage">
             <h1>Checkout</h1>
             <div className="checkoutArea">
                 <form id="formSection">
-                    <h2>Shipping Address</h2>
-                    <label>Address:</label><input value="Saved Address"/>
-                    <h2>Payment</h2>
+                    <div className="shippingSection">
+                        <h2>Shipping Address</h2>
+                        <label>Address:</label><input value="Saved Address"/>
+                    </div>
                     <div className="paymentSection">
+                        <h2>Payment</h2>
                         <label>Card:</label>
                         <select>
                             <option value=""></option>
@@ -22,7 +24,7 @@ const Checkout = () => {
                             <option value="option2">option2</option>
                         </select>
                         <label>Promotion Code:</label><input/>
-                        <button>Add Card</button>
+                        <button id="addCardBtn">Add Card</button>
                     </div>
                 </form>
                 <div className="orderSummary">
