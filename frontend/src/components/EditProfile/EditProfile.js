@@ -5,6 +5,12 @@ function EditProfile() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardExpiry, setCardExpiry] = useState('');
+  const [cardCVV, setCardCVV] = useState('');
+  const [shippingAddress, setShippingAddress] = useState('');
+  const [city, setCity] = useState('');
+  const [zipCode, setZipCode] = useState('');
 
   useEffect(() => {
     // Here you would fetch the current user's profile data from your backend and set the state
@@ -21,40 +27,102 @@ function EditProfile() {
   };
 
   return (
-    <div className="edit-profile-container">
-      <form className="edit-profile-form" onSubmit={handleProfileUpdate}>
-        <h2>Edit Profile</h2>
-        <div className="input-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
+    <div class="container">
+        <div className="edit-profile-container">
+        <form className="edit-profile-form" onSubmit={handleProfileUpdate}>
+            <h2>Edit Profile</h2>
+            <div className="input-group">
+            <label htmlFor="name">Name</label>
+            <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+            />
+            </div>
+            <div className="input-group">
+            <label htmlFor="password">New Password (leave blank to keep current)</label>
+            <input
+                type="password"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+            />
+            </div>
+            <div className="input-group">
+            <input
+                type="checkbox"
+                id="subscribe"
+                checked={isSubscribed}
+                onChange={(e) => setIsSubscribed(e.target.checked)}
+            />
+            <label htmlFor="subscribe">Subscribe to promotions</label>
+            </div>
+            {/* Card Information */}
+            <h3>Add Card Information</h3>
+            <div className="input-group">
+            <label htmlFor="cardNumber">Card Number</label>
+            <input
+                type="text"
+                id="cardNumber"
+                value={cardNumber}
+                onChange={(e) => setCardNumber(e.target.value)}
+            />
+            </div>
+            <div className="input-group">
+            <label htmlFor="cardExpiry">Expiry Date</label>
+            <input
+                type="text"
+                id="cardExpiry"
+                placeholder="MM/YY"
+                value={cardExpiry}
+                onChange={(e) => setCardExpiry(e.target.value)}
+            />
+            </div>
+            <div className="input-group">
+            <label htmlFor="cardCVV">CVV</label>
+            <input
+                type="text"
+                id="cardCVV"
+                value={cardCVV}
+                onChange={(e) => setCardCVV(e.target.value)}
+            />
+            </div>
+
+            {/* Shipping Address */}
+            <h3>Change Shipping Address</h3>
+            <div className="input-group">
+            <label htmlFor="shippingAddress">Address</label>
+            <input
+                type="text"
+                id="shippingAddress"
+                value={shippingAddress}
+                onChange={(e) => setShippingAddress(e.target.value)}
+            />
+            </div>
+            <div className="input-group">
+            <label htmlFor="city">City</label>
+            <input
+                type="text"
+                id="city"
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
+            />
+            </div>
+            <div className="input-group">
+            <label htmlFor="zipCode">Zip Code</label>
+            <input
+                type="text"
+                id="zipCode"
+                value={zipCode}
+                onChange={(e) => setZipCode(e.target.value)}
+            />
+            </div>
+            <div className="actions">
+            <button type="submit">Update Profile</button>
+            </div>
+        </form>
         </div>
-        <div className="input-group">
-          <label htmlFor="password">New Password (leave blank to keep current)</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="input-group">
-          <input
-            type="checkbox"
-            id="subscribe"
-            checked={isSubscribed}
-            onChange={(e) => setIsSubscribed(e.target.checked)}
-          />
-          <label htmlFor="subscribe">Subscribe to promotions</label>
-        </div>
-        <div className="actions">
-          <button type="submit">Update Profile</button>
-        </div>
-      </form>
     </div>
   );
 }
