@@ -35,7 +35,7 @@ public class CinemaApplication {
 	
 	public void createDummyMovies(MovieRepository movieRepo) {
 		String[] movieTitles = {
-			"Eternal Quest", "Beyond Horizons", "Shadow's Edge",
+			"Eternal Quest", "Pirates of the Caribbean", "Shadow's Edge",
 			"Timeless", "Galactic Pioneers", "Mystery of the Depths",
 			"Uncharted Realms", "The Forgotten Era", "Labyrinth of Dreams",
 			"Echoes of Tomorrow"
@@ -50,7 +50,7 @@ public class CinemaApplication {
 
 		String[] movieTrailerImageURLs = {
 			"https://m.media-amazon.com/images/I/415Vq23LkIL._AC_UF1000,1000_QL80_.jpg",
-			"https://m.media-amazon.com/images/M/MV5BMGM1NzIwNDYtMzIyNS00OWJjLTlhYjYtMzYzYmFhNzAxYmM2XkEyXkFqcGdeQXVyNzU2NTY2MDg@._V1_.jpg",
+			"https://m.media-amazon.com/images/M/MV5BNGYyZGM5MGMtYTY2Ni00M2Y1LWIzNjQtYWUzM2VlNGVhMDNhXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX671_.jpg",
 			"https://m.media-amazon.com/images/M/MV5BZTczZDg0MDItMTI4MC00ZGRiLTk2NzUtZGQ2MDYzYzk2YTMwXkEyXkFqcGdeQXVyNTcyMTgyNjY@._V1_FMjpg_UX1000_.jpg",
 			"https://m.media-amazon.com/images/M/MV5BMjA5ODkxODgzMl5BMl5BanBnXkFtZTgwNzA4MTc5NDM@._V1_FMjpg_UX1000_.jpg",
 			"https://images.igdb.com/igdb/image/upload/t_original/co4h26.webp",
@@ -59,6 +59,21 @@ public class CinemaApplication {
 			"https://images.moviesanywhere.com/259e8d9930b8d9d41ddbc1e7b0e2b7a8/dd46a372-02a3-415a-b92f-94bbdafb4e87.jpg",
 			"https://m.media-amazon.com/images/M/MV5BYWU4N2FjZDMtZDVmNi00NjZjLWIyZWUtNmZmYWFiOGFkMjYxXkEyXkFqcGdeQXVyMzU0NzkwMDg@._V1_.jpg",
 			"https://m.media-amazon.com/images/M/MV5BMjM3Njg3NjUyNF5BMl5BanBnXkFtZTgwODg2NzYxNzE@._V1_.jpg"
+		};
+
+		String[] trailerVideoURLs = {
+			"https://www.youtube.com/watch?v=m6_olJRkq18",
+			"https://www.youtube.com/watch?v=cmwqU6R9x9k",
+			"https://www.youtube.com/watch?v=p9f33TJN_rM",
+			"https://www.youtube.com/watch?v=WXTjc41Tj_I",
+			"https://www.youtube.com/watch?v=ngO6Mnmzc8A",
+			"https://www.youtube.com/watch?v=oyEIyB2-RVQ",
+			"https://www.youtube.com/watch?v=u33Ttb-a47A",
+			"https://www.youtube.com/watch?v=omMvU7J8uf8",
+			"https://www.youtube.com/watch?v=flr0T_2Kzyg",
+			"https://www.youtube.com/watch?v=8wD3AnHpUjE"
+
+
 		};
 
 		String[] categories = {
@@ -91,7 +106,7 @@ public class CinemaApplication {
 			movie.setDirector(directors[i]);
 			movie.setSynopsis("Synopsis of " + movieTitles[i]);
 			movie.setTrailerPictureURL(movieTrailerImageURLs[i]);
-			movie.setTrailerVideoURL("https://youtube.com/trailer" + i);
+			movie.setTrailerVideoURL(trailerVideoURLs[i]);
 			movie.setCategory(categories[i]);
 			movie.setReviews(List.of(review1, review2));
 			movie.setRating(Rating.values()[(i % Rating.values().length)]); // Assuming Rating is an enum

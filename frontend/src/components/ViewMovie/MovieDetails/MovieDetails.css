@@ -22,22 +22,12 @@
 }
 
 .video-container iframe,
-.video-container img,
-.play-icon {
+.video-container img {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-.play-icon {
-  cursor: pointer; /* Change cursor to indicate interactivity */
-  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-}
-
-.play-icon:hover {
-  background-color: rgba(0, 0, 0, 0.7); /* Darken background on hover for better visibility */
 }
 
 .movie-details p {
