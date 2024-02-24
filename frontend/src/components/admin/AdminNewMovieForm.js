@@ -82,7 +82,7 @@ const AdminNewMovieForm = () => {
     };
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className="newMovieForm" onSubmit={submitHandler}>
             <label>Movie Title</label>
             <input
             id="movieTitle"
@@ -153,7 +153,7 @@ const AdminNewMovieForm = () => {
             value={enteredDatetime}
             onChange={datetimeChangeHandler}
             />
-            <button type="submit">Add Movie</button>
+            <button className="newMovieFormSubmitBtn" type="submit">Add Movie</button>
         </form>
     );
 }
