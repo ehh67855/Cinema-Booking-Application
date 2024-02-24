@@ -1,0 +1,17 @@
+
+h1, h2 {
+    text-align: center;
+}
+#ticketAmountForm {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+}
+#formContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+.proceedCancelBtn {
+    display: flex;
+    justify-content: center;
+}

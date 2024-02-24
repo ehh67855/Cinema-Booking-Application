@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+.checkoutArea {
+    display: flex;
+    justify-content:space-evenly;
+}
+#formSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.orderSummary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
+}
+.paymentSection {
+    display: flex;
+    flex-direction: column;
+}
+.confirmCancelBtn {
+    display: flex;
+    justify-content: center;
+}

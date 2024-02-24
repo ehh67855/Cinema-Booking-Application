@@ -9,6 +9,10 @@ import AdminMoviesPage from './components/admin/AdminMoviesPage';
 import EditMovie from './components/admin/EditMovie';
 import AdminPromotionsPage from './components/admin/AdminPromotionsPage';
 import AdminMainPage from './components/admin/AdminMainPage';
+import BookTickets from './components/BookTicketsPages/BookTickets';
+import TicketOrder from './components/BookTicketsPages/TicketOrder';
+import Checkout from './components/CheckoutPages/Checkout';
+import OrderConfirm from './components/CheckoutPages/OrderConfirm';
 
 function App() {
   return (
@@ -20,6 +24,10 @@ function App() {
           <Route path="/manageMovies" element={<Layout><AdminMoviesPage /></Layout>} />
           <Route path="/editMovie/:id" element={<Layout><EditMovie /></Layout>}/>
           <Route path="/promotions" element={<Layout><AdminPromotionsPage /></Layout>} />
+          <Route path="/bookTickets" element={<Layout><BookTickets /></Layout>} />
+          <Route path="/ticketOrder" element={<Layout><TicketOrder /></Layout>} />
+          <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
+          <Route path="/orderConfirmation" element={<Layout><OrderConfirm /></Layout>} />
           <Route path="*" element={<Layout><NoPage /></Layout>} />
     </Routes>
   );
