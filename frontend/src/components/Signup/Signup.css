@@ -1,0 +1,61 @@
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height, same as the login page */
+}
+
+.signup-form {
+  width: 300px; /* Match the login form width for consistency */
+  padding: 20px;
+  border: 1px solid #ccc; /* Same basic styling as login form */
+  border-radius: 5px; /* Rounded corners like the login form */
+}
+
+.input-group {
+  margin-bottom: 15px; /* Space out the input fields */
+}
+
+.input-group label {
+  display: block; /* Ensure labels are above the input fields */
+  margin-bottom: 5px; /* Small space between label and input field */
+}
+
+.input-group input {
+  width: 100%; /* Full width of the form container */
+  padding: 8px; /* Padding for input field for better readability */
+  border: 1px solid #ccc; /* Consistent border with the login page */
+  border-radius: 4px; /* Rounded corners for the input fields */
+}
+
+.actions {
+  margin-top: 20px; /* Space above the action buttons/links */
+}
+
+.actions button {
+  width: 100%; /* Full width for prominence */
+  padding: 10px; /* Padding for better clickability */
+  background-color: #28a745; /* A green color to signify a positive action like signing up */
+  color: white; /* Text color for contrast */
+  border: none; /* No border for a cleaner look */
+  border-radius: 4px; /* Rounded corners for consistency */
+  cursor: pointer; /* Cursor pointer to indicate clickability */
+}
+
+.actions button:hover {
+  background-color: #218838; /* Darker green on hover for feedback */
+}
+
+.login-link {
+  text-align: center; /* Center the text for aesthetic purposes */
+  margin-top: 20px; /* Margin on top for spacing */
+}
+
+.login-link a {
+  color: #007bff; /* Same blue color for consistency with the login page */
+  text-decoration: none; /* No underline for a cleaner look */
+}
+
+.login-link a:hover {
+  text-decoration: underline; /* Underline on hover for feedback */
+}

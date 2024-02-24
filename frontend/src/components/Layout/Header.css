@@ -1,0 +1,18 @@
+header {
+  padding: 30px; /* Adjust padding as needed */
+  background-color: #333; /* Background color of the header */
+  color: #fff; /* Text color */
+
+}
+
+header a {
+  color: inherit; /* This makes the link use the text color of the parent, removing the typical blue color */
+  text-decoration: none; /* Removes the underline from the link */
+  font-size: 24px; /* Adjust font size as needed */
+  font-weight: bold; /* Makes the text bold */
+}
+
+/* Optional: Add styles for when the user hovers over the link */
+header a:hover {
+  text-decoration: underline; /* Adds underline on hover, remove this line if no hover effect is desired */
+}

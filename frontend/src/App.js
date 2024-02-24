@@ -1,6 +1,5 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './components/HomePage/HomePage';
 import NoPage from './components/NoPage';
 import Layout from './components/Layout/Layout';
 import MovieBrowse from './components/BrowseMovie/MovieBrowse/MovieBrowse';
@@ -13,12 +12,16 @@ import BookTickets from './components/BookTicketsPages/BookTickets';
 import TicketOrder from './components/BookTicketsPages/TicketOrder';
 import Checkout from './components/CheckoutPages/Checkout';
 import OrderConfirm from './components/CheckoutPages/OrderConfirm';
+import Signup from './components/Signup/Signup';
+import Login from './components/Login/Login';
 
 function App() {
   return (
     <Routes>
-          <Route path="/" element={<Layout><HomePage /> </Layout>} />
+          <Route path="/" element={<Layout><MovieBrowse /> </Layout>} />
           <Route path="/Browse" element={<Layout><MovieBrowse /></Layout>} />
+          <Route path="/login" element={<Layout><Login /></Layout>} />
+          <Route path="/register" element={<Layout><Signup /></Layout>} />
           <Route path="/movie/:id" element={<Layout><MovieDetails /></Layout>}/>
           <Route path="/adminMainPage" element={<Layout><AdminMainPage /></Layout>} />
           <Route path="/manageMovies" element={<Layout><AdminMoviesPage /></Layout>} />

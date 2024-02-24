@@ -1,10 +1,12 @@
 import React from "react";
 import './Layout.css'
+import { Link } from "react-router-dom";
+import './Header.css';
 
 function Header() {
     return (
         <header>
-            Cinema E-Booking System
+            <Link to={`/`}>Cinema E-Booking System</Link>
         </header>
     );
 }

@@ -9,6 +9,7 @@ function MovieBrowse() {
     const [searchTitleInput, setSearchTitleInput] = useState('');
     const [searchCategoryInput, setSearchCategoryInput] = useState('');
     const [searchShowingInput, setSearchShowingInput] = useState(null);
+    const [loading,setLoading]  = useState(false);
 
     useEffect( () => {
         fetchMovies();
@@ -16,6 +17,7 @@ function MovieBrowse() {
 
     const fetchMovies = async () => {
         try {
+            setLoading(true);
             const response = await fetch('http://localhost:8080/api/movies/get-all-movies');
             if(!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -25,6 +27,8 @@ function MovieBrowse() {
             setMovies(data)
         } catch (error) {
             console.error("Failed to fetch movies: ", error);
+        } finally {
+            setLoading(false);
         }
     } 
 
@@ -53,15 +57,24 @@ function MovieBrowse() {
         )
     );
 
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+
     return (
 
         <div class = "container">
+            <h1>Find movies</h1>
+            <hr/>
             <div class = "searchContainer">
                 <SearchBar onSearch = {handleSearchTitleInput} placeholder = "Enter Movie Title"></SearchBar>
                 <SearchBar onSearch = {handleSearchCategoryInput} placeholder = "Enter Category"></SearchBar>
                 <SearchBar onSearch = {handleSearchShowingInput} type = "Date"></SearchBar>
             </div>
-            <MoviesContainer movies={filteredMovies}></MoviesContainer>
+            <h2> Currently Running</h2> <hr/>
+            <MoviesContainer movies={filteredMovies.filter(movie => !movie.comingSoon)}></MoviesContainer>
+            <h2>Coming Soon</h2> <hr/>
+            <MoviesContainer movies={filteredMovies.filter(movie => movie.comingSoon)}></MoviesContainer>
         </div>
 
     );

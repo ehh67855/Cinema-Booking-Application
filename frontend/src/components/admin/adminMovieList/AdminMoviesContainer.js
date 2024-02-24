@@ -4,7 +4,6 @@ import Movie from "./AdminMovieCard";
 
 function AdminMoviesContainer({movies}) {
 
-
     return (
         <>
         <div className="container">
@@ -17,7 +16,6 @@ function AdminMoviesContainer({movies}) {
             </div>
         </div>
         </>
-
     );
 }
 
