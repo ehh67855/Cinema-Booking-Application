@@ -7,23 +7,44 @@ h2 {
 .checkoutArea {
     display: flex;
     justify-content:space-evenly;
+    margin: 25px 0;
 }
 #formSection {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-around;
 }
 .orderSummary {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: start;
     text-align: center;
+}
+.orderSummary > * {
+    margin-bottom: 10px;
 }
 .paymentSection {
     display: flex;
     flex-direction: column;
 }
+.paymentSection input, select {
+    margin-bottom: 10px;
+}
+.shippingSection {
+    display: flex;
+    flex-direction: column;
+}
+.shippingSection input {
+    margin-bottom: 10px;
+}
 .confirmCancelBtn {
     display: flex;
     justify-content: center;
+    margin-top: 25px;
+}
+#addCardBtn {
+    margin: 0px auto;
+}
+#checkoutPage {
+    margin: 25px 0;
 }

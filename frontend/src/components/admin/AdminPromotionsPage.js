@@ -27,7 +27,7 @@ const AdminPromotionsPage = () => {
 
     return (
         <div>
-            <form onSubmit={submitHandler}>
+            <form className="promotionsForm" onSubmit={submitHandler}>
                 <label>Promotion Code</label>
                 <input
                     id="promotionCode"
@@ -42,7 +42,7 @@ const AdminPromotionsPage = () => {
                     value={enteredDicountPercent}
                     onChange={dicountPercentChangeHandler}
                 />
-                <button type="submit">Add Promotion</button>
+                <button className="promotionsFormSubmitBtn" type="submit">Add Promotion</button>
             </form>
         </div>
     );

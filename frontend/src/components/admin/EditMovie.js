@@ -105,7 +105,7 @@ const EditMovie = () => {
     };
 
     return (
-        <form onSubmit={submitHandler}>
+        <form className="editMovieForm" onSubmit={submitHandler}>
             <label>Movie Title</label>
             <input
             id="movieTitle"
@@ -176,7 +176,7 @@ const EditMovie = () => {
             value={enteredDatetime}
             onChange={datetimeChangeHandler}
             />
-            <button type="submit">Confirm</button>
+            <button className="editMovieFormSubmitBtn" type="submit">Confirm</button>
         </form>
     );
 }

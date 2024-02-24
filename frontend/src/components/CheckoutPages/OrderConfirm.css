@@ -1,3 +1,13 @@
 #orderConfirmPage {
     text-align: center;
+    margin: 25px 0;
+}
+#thankYouMsg {
+    margin: 25px 0;
+}
+#orderDetails {
+    margin-bottom: 25px;
+}
+#orderDetails > * {
+    margin-bottom: 10px;
 }

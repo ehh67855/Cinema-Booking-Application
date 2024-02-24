@@ -7,9 +7,9 @@ import './TicketOrder.css';
 
 const TicketOrder = () => {
     return (
-        <div>
+        <div id="ticketOrderPage">
             <h1>Order Summary</h1>
-            <h2>Ticket Amounts</h2>
+            <h2 id="ticketAmntHdr">Ticket Amounts</h2>
             <div id="formContainer">
                 <form id="ticketAmountForm">
                     <label>Child ($10):</label><input type="number"/>
@@ -18,8 +18,8 @@ const TicketOrder = () => {
                     <label>Total:</label><input disabled/>
                 </form>
             </div>
-            <div className="orderSummary">
-                <h2>Prices</h2>
+            <div className="orderCost">
+                <h2>Costs</h2>
                 <p>Senior Tickets: $ </p>
                 <p>Adult Tickets: $ </p>
                 <p>Chlid Tickets: $ </p>
