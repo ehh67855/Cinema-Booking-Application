@@ -59,3 +59,7 @@
 .review p:nth-child(2) {
   font-size: 0.95em; /* Slightly reduce font size for ratings */
 }
+
+.showings button {
+  margin: 10px;
+}

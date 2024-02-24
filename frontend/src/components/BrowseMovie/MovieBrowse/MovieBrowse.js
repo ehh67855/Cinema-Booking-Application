@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MoviesContainer from "../MoviesContainer/MoviesContainer";
 import SearchBar from "../SearchBar/SearchBar";
+import "./MovieBrowse.css";
 
 
 function MovieBrowse() {

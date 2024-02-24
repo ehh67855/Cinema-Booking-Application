@@ -7,6 +7,8 @@ function Header() {
     return (
         <header>
             <Link to={`/`}>Cinema E-Booking System</Link>
+            <a id = "login" href = "/login" >Login</a>
+            <a id = "signup" href = "/register" >Signup</a>
         </header>
     );
 }
