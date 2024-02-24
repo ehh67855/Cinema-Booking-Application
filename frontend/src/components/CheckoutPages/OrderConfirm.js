@@ -14,6 +14,7 @@ const OrderConfirm = () => {
             <p>Adult Tickets: $ </p>
             <p>Chlid Tickets: $ </p>
             <p>Promo Discount: % </p>
+            <p>Booking fees: </p>
             <p>Tax: % </p>
             <p>Total: $ </p>
             <button>Return to Home Page</button>

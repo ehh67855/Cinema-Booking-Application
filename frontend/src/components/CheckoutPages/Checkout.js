@@ -31,6 +31,8 @@ const Checkout = () => {
                     <p>Adult Tickets: $ </p>
                     <p>Chlid Tickets: $ </p>
                     <p>Promo Discount: % </p>
+                    <p>Booking fees: $</p>
+                    <p>Sales tax: %</p>
                     <p>Total: $ </p>
                 </div>
             </div>
