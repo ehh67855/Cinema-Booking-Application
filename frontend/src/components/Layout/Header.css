@@ -17,7 +17,7 @@ header a:hover {
   text-decoration: underline; /* Adds underline on hover, remove this line if no hover effect is desired */
 }
 
-#login, #signup {
+#login, #signup, #edit-profile {
     float: right;
     padding-left: 10px;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Signup.css'; // Assuming you'll have similar styling with possible additions
+import { Link } from 'react-router-dom';
 
 function Signup() {
   const [username, setUsername] = useState('');
@@ -54,7 +55,7 @@ function Signup() {
           />
         </div>
         <div className="actions">
-          <button type="submit">Sign Up</button>
+            <a className = "btn btn-primary" href="/register">Sign up</a>
         </div>
         <div className="login-link">
           Already registered? <a href="/login">Log in</a>

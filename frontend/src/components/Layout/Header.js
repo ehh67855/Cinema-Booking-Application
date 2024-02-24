@@ -9,6 +9,7 @@ function Header() {
             <Link to={`/`}>Cinema E-Booking System</Link>
             <a id = "login" href = "/login" >Login</a>
             <a id = "signup" href = "/register" >Signup</a>
+            <a id = "edit-profile" href="/edit-profile">Edit Profile</a>
         </header>
     );
 }
