@@ -8,7 +8,6 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [name, setName] = useState('');
-  const [isSubscribed, setIsSubscribed] = useState(false);
   const [cardNumber, setCardNumber] = useState('');
   const [cardExpiry, setCardExpiry] = useState('');
   const [cardCVV, setCardCVV] = useState('');
@@ -28,30 +27,56 @@ function Signup() {
       <form className="signup-form" onSubmit={handleSignup}>
         <h2>Sign Up</h2>
         <div className="input-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">Email *</label>
           <input
             type="email"
             id="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          
+        </div>
+        <div className="input-group">
+          <label htmlFor="email">Phone Number *</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="email">Name *</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className="input-group">
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Password *</label>
           <input
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className="input-group">
-          <label htmlFor="confirm-password">Confirm Password</label>
+          <label htmlFor="confirm-password">Confirm Password *</label>
           <input
             type="password"
             id="confirm-password"
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
+            required
           />
           <h3>Enter Card Information</h3>
         <div className="input-group">

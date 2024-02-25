@@ -16,12 +16,13 @@ function Login() {
       <form className="login-form" onSubmit={handleLogin}>
         <h2>Login</h2>
         <div className="input-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Email</label>
           <input
             type="text"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
         </div>
         <div className="input-group">
@@ -31,11 +32,12 @@ function Login() {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
         <div className="actions">
-          <button type="submit">Log In</button>
-          <a href="/forgot-password" className="forgot-password">Forgot Password?</a>
+          <button className="btn btn-primary" type="submit">Log In</button>
+          <a href="/forgot-password" className="btn btn-primary">Forgot Password?</a>
         </div>
         <div className="register-link">
           Not registered yet? <a href="/register">Sign up</a>

@@ -12,6 +12,10 @@ function EditProfile() {
   const [city, setCity] = useState('');
 const [cardType, setCardType] = useState('');
   const [zipCode, setZipCode] = useState('');
+    const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+
 
   useEffect(() => {
     // Here you would fetch the current user's profile data from your backend and set the state
@@ -31,17 +35,27 @@ const [cardType, setCardType] = useState('');
     <div class="container">
         <div className="edit-profile-container">
         <form className="edit-profile-form" onSubmit={handleProfileUpdate}>
-            <h2>Edit Profile</h2>
-            <div className="input-group">
-            <label htmlFor="name">Name</label>
-            <input
-                type="text"
-                id="name"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-            />
-            </div>
-            <div className="input-group">
+        <div className="input-group">
+          <label htmlFor="email">Phone Number</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="email">Name</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
             <label htmlFor="password">New Password (leave blank to keep current)</label>
             <input
                 type="password"
