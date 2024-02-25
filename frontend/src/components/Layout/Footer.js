@@ -4,7 +4,7 @@ import './Layout.css'
 function Footer() {
     return (
         <footer>
-            Footer
+            
         </footer>
     );
 }

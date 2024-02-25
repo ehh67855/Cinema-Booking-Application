@@ -14,14 +14,18 @@ import Checkout from './components/CheckoutPages/Checkout';
 import OrderConfirm from './components/CheckoutPages/OrderConfirm';
 import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
+import SignupConfirmation from './components/Signup/SignupConfirmation';
+import EditProfile from './components/EditProfile/EditProfile';
 
 function App() {
   return (
     <Routes>
           <Route path="/" element={<Layout><MovieBrowse /> </Layout>} />
+          <Route path="/edit-profile" element={<Layout><EditProfile/></Layout>} />
           <Route path="/Browse" element={<Layout><MovieBrowse /></Layout>} />
           <Route path="/login" element={<Layout><Login /></Layout>} />
           <Route path="/register" element={<Layout><Signup /></Layout>} />
+          <Route path="/register-confirmation" element={<Layout><SignupConfirmation /></Layout>} />
           <Route path="/movie/:id" element={<Layout><MovieDetails /></Layout>}/>
           <Route path="/adminMainPage" element={<Layout><AdminMainPage /></Layout>} />
           <Route path="/manageMovies" element={<Layout><AdminMoviesPage /></Layout>} />
