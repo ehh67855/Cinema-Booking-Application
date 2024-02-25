@@ -8,8 +8,12 @@ import './TicketOrder.css';
 const TicketOrder = () => {
     return (
         <div id="ticketOrderPage">
-            <h1>Order Summary</h1>
-            <h2 id="ticketAmntHdr">Ticket Amounts</h2>
+            <div id="orderSummaryHdrContainer">
+                <h1 id="orderSummaryHdr">Order Summary</h1>
+            </div>
+            <div id="ticketAmntHdrContainer">
+                <h2 id="ticketAmntHdr">Ticket Amounts</h2>
+            </div>
             <div id="formContainer">
                 <form id="ticketAmountForm">
                     <label>Child ($10):</label><input type="number"/>
@@ -18,12 +22,14 @@ const TicketOrder = () => {
                     <label>Total:</label><input disabled/>
                 </form>
             </div>
-            <div className="orderCost">
-                <h2>Costs</h2>
-                <p>Senior Tickets: $ </p>
-                <p>Adult Tickets: $ </p>
-                <p>Chlid Tickets: $ </p>
-                <p>Total: $ </p>
+            <div id="orderCostContainer">
+                <div className="orderCost">
+                    <h2 id="orderCostHdr">Costs</h2>
+                    <p>Senior Tickets: $ </p>
+                    <p>Adult Tickets: $ </p>
+                    <p>Chlid Tickets: $ </p>
+                    <p id="orderCostFinalPara">Total: $ </p>
+                </div>
             </div>
             <div className="proceedCancelBtn">
                 <input type="submit" form="ticketAmountForm" value="Proceed to checkout"></input>

@@ -1,11 +1,16 @@
-h1 {
-    text-align: center;
+#bkTicksHdrContainer {
+    display: flex;
+    justify-content: center;
 }
-h2 {
+#bkTicksHdr {
     text-align: center;
+    border: solid;
+    padding: 10px 30px;
+    margin: 0px;
 }
 #movieTitle {
-    margin: 25px 0;
+    text-align: center;
+    margin: 30px;
 }
 .centeredH4 {
     text-align: center;
@@ -14,14 +19,14 @@ h6 {
     text-align: center;
 }
 #bkTicksPage {
-    margin: 25px 0;
+    margin: 50px 0;
 }
 #seatLayoutImg {
     display: block;
     margin: 0 auto;
     width: 600px;
     border: solid;
-    margin-bottom: 25px;
+    margin-bottom: 50px;
 }
 .submitCancelBtn {
     display: flex;
@@ -35,7 +40,7 @@ h6 {
 .bkTicksAllFields {
     display: flex;
     justify-content: space-evenly;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 }
 .bkTicksFields1Container {
     display: flex;

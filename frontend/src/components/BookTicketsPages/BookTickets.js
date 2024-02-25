@@ -8,9 +8,9 @@ import './BookTickets.css';
 const BookTickets = () => {
     return (
         <div id="bkTicksPage">
-            <div>
+            <div id="bkTicksHdrContainer">
                 {/* <div id="emptySpace"></div> */}
-                <h1>Booking Tickets for:</h1>
+                <h1 id="bkTicksHdr">Booking Tickets for:</h1>
                 {/* <img id="profileImg"/> */}
             </div>
             <h2 id="movieTitle">[title of movie here]</h2>

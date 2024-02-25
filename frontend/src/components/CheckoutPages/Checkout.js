@@ -8,15 +8,17 @@ import './Checkout.css';
 const Checkout = () => {
     return (
         <div id="checkoutPage">
-            <h1>Checkout</h1>
+            <div id="checkoutHdrContainer">
+                <h1 id="checkoutHdr">Checkout</h1>
+            </div>
             <div className="checkoutArea">
                 <form id="formSection">
                     <div className="shippingSection">
-                        <h2>Shipping Address</h2>
+                        <h2 className="checkoutAreaHdrs">Shipping Address</h2>
                         <label>Address:</label><input value="Saved Address"/>
                     </div>
                     <div className="paymentSection">
-                        <h2>Payment</h2>
+                        <h2 className="checkoutAreaHdrs">Payment</h2>
                         <label>Card:</label>
                         <select>
                             <option value=""></option>
@@ -28,14 +30,14 @@ const Checkout = () => {
                     </div>
                 </form>
                 <div className="orderSummary">
-                    <h2>Order Summary</h2>
+                    <h2 className="checkoutAreaHdrs" id="orderSumHdr">Order Summary</h2>
                     <p>Senior Tickets: $ </p>
                     <p>Adult Tickets: $ </p>
                     <p>Chlid Tickets: $ </p>
                     <p>Promo Discount: % </p>
                     <p>Booking fees: $</p>
                     <p>Sales tax: %</p>
-                    <p>Total: $ </p>
+                    <p id="orderSumFinalPara">Total: $ </p>
                 </div>
             </div>
             <div className="confirmCancelBtn">

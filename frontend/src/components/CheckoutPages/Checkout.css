@@ -1,13 +1,23 @@
-h1 {
-    text-align: center;
+#checkoutHdrContainer {
+    display: flex;
+    justify-content: center;
 }
-h2 {
+#checkoutHdr {
+    display: inline;
     text-align: center;
+    border: solid;
+    padding: 10px;
+    margin: 0px;
+}
+.checkoutAreaHdrs {
+    text-align: center;
+    border: solid;
+    padding: 5px 50px;
 }
 .checkoutArea {
     display: flex;
     justify-content:space-evenly;
-    margin: 25px 0;
+    margin-top: 50px;
 }
 #formSection {
     display: flex;
@@ -21,7 +31,14 @@ h2 {
     text-align: center;
 }
 .orderSummary > * {
-    margin-bottom: 10px;
+    margin-bottom: 0px;
+    padding-top: 10px;
+    border-left: solid;
+    border-right: solid;
+}
+#orderSumFinalPara {
+    padding-bottom: 10px;
+    border-bottom: solid;
 }
 .paymentSection {
     display: flex;
@@ -40,11 +57,11 @@ h2 {
 .confirmCancelBtn {
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 50px;
 }
 #addCardBtn {
     margin: 0px auto;
 }
 #checkoutPage {
-    margin: 25px 0;
+    margin: 50px 0;
 }
