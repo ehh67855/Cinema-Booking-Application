@@ -1,0 +1,55 @@
+package com.csci4050.Cinema.security;
+
+import java.util.Arrays;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import com.csci4050.Cinema.service.CustomUserDetailsService;
+
+@Configuration
+@EnableWebSecurity
+public class WebSecurityConfig {
+
+    @Autowired
+    CustomUserDetailsService customUserDetailsService;
+
+	@Bean
+	SecurityFilterChain web(HttpSecurity http) throws Exception {
+		http
+            .csrf().disable()
+            .cors().and()
+            .authorizeHttpRequests(authorize -> authorize
+                .anyRequest().authenticated()
+            )
+            .formLogin()
+                .loginProcessingUrl("/api/login") // Define the login endpoint
+                .permitAll()
+                .and()
+            .logout()
+                .logoutUrl("/api/logout") // Define the logout endpoint
+                .permitAll();
+        return http.build();
+    }
+
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(Arrays.asList("http://localhost:3000")); // Allow your React app's origin
+        configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
+        configuration.setAllowedHeaders(Arrays.asList("authorization", "content-type", "x-auth-token"));
+        configuration.setAllowCredentials(true); // Allow credentials
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
+
+}

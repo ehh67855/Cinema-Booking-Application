@@ -18,10 +18,8 @@ const [cardType, setCardType] = useState('');
 
 
   useEffect(() => {
-    // Here you would fetch the current user's profile data from your backend and set the state
-    // For demonstration, using placeholder values
-    setName('John Doe'); // Placeholder name
-    setIsSubscribed(true); // Placeholder subscription status
+    setName('John Doe'); 
+    setIsSubscribed(true);
   }, []);
 
   const handleProfileUpdate = (e) => {
@@ -35,6 +33,7 @@ const [cardType, setCardType] = useState('');
     <div class="container">
         <div className="edit-profile-container">
         <form className="edit-profile-form" onSubmit={handleProfileUpdate}>
+        <h3>Edit User Information</h3>
         <div className="input-group">
           <label htmlFor="email">Phone Number</label>
           <input
@@ -44,7 +43,7 @@ const [cardType, setCardType] = useState('');
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-          
+        
         </div>
 
         <div className="input-group">

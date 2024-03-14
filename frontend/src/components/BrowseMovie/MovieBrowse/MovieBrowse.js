@@ -6,7 +6,7 @@ import "./MovieBrowse.css";
 
 function MovieBrowse() {
 
-    const[movies,setMovies] = useState([]);
+    const [movies,setMovies] = useState([]);
     const [searchTitleInput, setSearchTitleInput] = useState('');
     const [searchCategoryInput, setSearchCategoryInput] = useState('');
     const [searchShowingInput, setSearchShowingInput] = useState(null);
@@ -19,7 +19,12 @@ function MovieBrowse() {
     const fetchMovies = async () => {
         try {
             setLoading(true);
-            const response = await fetch('http://localhost:8080/api/movies/get-all-movies');
+            const username = 'user'; 
+            const password = 'pass';
+            const headers = new Headers();
+            headers.append('Authorization', 'Basic ' + btoa(username + ":" + password));
+
+            const response = await fetch('http://localhost:8080/api/movies/get-all-movies', { headers });
             if(!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -31,7 +36,7 @@ function MovieBrowse() {
         } finally {
             setLoading(false);
         }
-    } 
+    }
 
     const handleSearchTitleInput = (titleValue) => {
         setSearchTitleInput(titleValue);
@@ -59,7 +64,7 @@ function MovieBrowse() {
     );
 
     if (loading) {
-        return <div>Loading...</div>;
+        return <h1>Loading...</h1>;
     }
 
     return (

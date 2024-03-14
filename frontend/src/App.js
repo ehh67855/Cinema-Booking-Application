@@ -16,26 +16,29 @@ import Signup from './components/Signup/Signup';
 import Login from './components/Login/Login';
 import SignupConfirmation from './components/Signup/SignupConfirmation';
 import EditProfile from './components/EditProfile/EditProfile';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+
+localStorage.setItem("userStatus","unregistered");
 
 function App() {
   return (
     <Routes>
-          <Route path="/" element={<Layout><MovieBrowse /> </Layout>} />
-          <Route path="/edit-profile" element={<Layout><EditProfile/></Layout>} />
-          <Route path="/Browse" element={<Layout><MovieBrowse /></Layout>} />
-          <Route path="/login" element={<Layout><Login /></Layout>} />
-          <Route path="/register" element={<Layout><Signup /></Layout>} />
-          <Route path="/register-confirmation" element={<Layout><SignupConfirmation /></Layout>} />
-          <Route path="/movie/:id" element={<Layout><MovieDetails /></Layout>}/>
-          <Route path="/adminMainPage" element={<Layout><AdminMainPage /></Layout>} />
-          <Route path="/manageMovies" element={<Layout><AdminMoviesPage /></Layout>} />
-          <Route path="/editMovie/:id" element={<Layout><EditMovie /></Layout>}/>
-          <Route path="/promotions" element={<Layout><AdminPromotionsPage /></Layout>} />
-          <Route path="/bookTickets" element={<Layout><BookTickets /></Layout>} />
-          <Route path="/ticketOrder" element={<Layout><TicketOrder /></Layout>} />
-          <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
-          <Route path="/orderConfirmation" element={<Layout><OrderConfirm /></Layout>} />
-          <Route path="*" element={<Layout><NoPage /></Layout>} />
+      <Route path="/" element={<Layout><MovieBrowse /> </Layout>} />
+      <Route path="/edit-profile" element={<Layout><EditProfile/></Layout>} />
+      <Route path="/login" element={<Layout><Login /></Layout>} />
+      <Route path="/register" element={<Layout><Signup /></Layout>} />
+      <Route path="/register-confirmation" element={<Layout><SignupConfirmation /></Layout>} />
+      <Route path="/movie/:id" element={<Layout><MovieDetails /></Layout>}/>
+      <Route path="/adminMainPage" element={<Layout><AdminMainPage /></Layout>} />
+      <Route path="/manageMovies" element={<Layout><AdminMoviesPage /></Layout>} />
+      <Route path="/editMovie/:id" element={<Layout><EditMovie /></Layout>}/>
+      <Route path="/promotions" element={<Layout><AdminPromotionsPage /></Layout>} />
+      <Route path="/bookTickets" element={<Layout><BookTickets /></Layout>} />
+      <Route path="/ticketOrder" element={<Layout><TicketOrder /></Layout>} />
+      <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
+      <Route path="/orderConfirmation" element={<Layout><OrderConfirm /></Layout>} />
+      <Route path="/forgot-password" element={<Layout><ForgotPassword></ForgotPassword></Layout>}/>
+      <Route path="*" element={<Layout><NoPage /></Layout>} />
     </Routes>
   );
 }

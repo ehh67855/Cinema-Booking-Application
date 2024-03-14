@@ -1,19 +1,46 @@
 import React, { useState } from 'react';
-import './Login.css'; // Importing the CSS file for styling
+import './Login.css'; 
+import { useNavigate } from 'react-router-dom';
+
 
 function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Implement login logic here
-    console.log('Login attempt with:', username, password);
-  };
+
+  const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await fetch('http://localhost:8080/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username, 
+        password: password,
+      })
+    });
+    
+    if (response.ok) {
+      const responseBody = await response.text();
+      console.log("isAdmin", responseBody); 
+      navigate('/'); // Redirects to the root route without reloading the page
+    } else {
+      console.error('Login failed:', response.status, response.statusText);
+    }
+
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 
   return (
     <div className="login-container">
       <form className="login-form" onSubmit={handleLogin}>
+        
         <h2>Login</h2>
         <div className="input-group">
           <label htmlFor="username">Email</label>
@@ -25,6 +52,7 @@ function Login() {
             required
           />
         </div>
+
         <div className="input-group">
           <label htmlFor="password">Password</label>
           <input
@@ -35,11 +63,12 @@ function Login() {
             required
           />
         </div>
-        <div className="actions">
-          <button className="btn btn-primary" type="submit">Log In</button>
-          <a href="/forgot-password" className="btn btn-primary">Forgot Password?</a>
-        </div>
-        <div className="register-link">
+
+        <button type="submit" className="btn btn-primary login-button">Log In</button>
+
+        <div className="links">
+          <a href="/forgot-password">Forgot Password?</a>
+          <br />
           Not registered yet? <a href="/register">Sign up</a>
         </div>
       </form>

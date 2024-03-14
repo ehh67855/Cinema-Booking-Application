@@ -1,0 +1,58 @@
+package com.csci4050.Cinema.service;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+import com.csci4050.Cinema.domain.user.UserAccount;
+import com.csci4050.Cinema.repository.UserRepository;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
+    
+    @Autowired UserRepository userRepository;
+
+    // @Bean
+	// CommandLineRunner init(@Autowired UserRepository repo) {
+	// 	return args -> {
+	// 		UserAccount user = new UserAccount();
+	// 		user.setUsername("user");
+	// 		user.setPassword("pass");
+	// 		user.setAuthorities(Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER")));
+	// 		userRepository.save(user);
+	// 	};
+	// }
+
+    @Bean
+    BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        UserAccount user = userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return new User(user.getUsername(), passwordEncoder().encode(user.getPassword()),user.getAuthorities());
+    }
+
+    public UserAccount getUserAccountByUsername(String username) {
+        return userRepository.findByUsername(username)
+            .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+    }
+
+
+}
