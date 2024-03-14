@@ -2,6 +2,18 @@
 <<<<<<< HEAD -> Main
 =======
 
+- User state, admin, unregistered, and registered
+- Conditional rendering based on user state
+- Signup client-side api call
+- Links and redirect functionality
+- Admin manage users page
+- Logout functionality
+- forget password client side api call
+- split edit profile into three components
+- include add card button
+- add api enpoints for each form
+
+
 ## Figma
 ```
 https://www.figma.com/file/3wiU69KJUvFirbdDpds3Z4/Cinema-E-Booking-System?type=design&node-id=0-1&mode=design&t=HPdQ457wtR0blHfs-0
