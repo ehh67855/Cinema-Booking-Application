@@ -5,14 +5,16 @@ function EditProfile() {
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [cardNumber, setCardNumber] = useState('');
   const [cardExpiry, setCardExpiry] = useState('');
-  const [cardCVV, setCardCVV] = useState('');
-  const [shippingAddress, setShippingAddress] = useState('');
+  const [billingAddr, setBillingAddr] = useState('');
+  const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
-const [cardType, setCardType] = useState('');
+  const [state, setState] = useState('');
+  const [cardType, setCardType] = useState('');
   const [zipCode, setZipCode] = useState('');
-    const [username, setUsername] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -31,121 +33,127 @@ const [cardType, setCardType] = useState('');
 
   return (
     <div class="container">
-        <div className="edit-profile-container">
+      <div className="edit-profile-container">
         <form className="edit-profile-form" onSubmit={handleProfileUpdate}>
-        <h3>Edit User Information</h3>
-        <div className="input-group">
-          <label htmlFor="email">Phone Number</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        
-        </div>
-
-        <div className="input-group">
-          <label htmlFor="email">Name</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          <h3>Edit User Information</h3>
+          <div className="input-group">
+            <label htmlFor="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
             <label htmlFor="password">New Password (leave blank to keep current)</label>
             <input
-                type="password"
-                id="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
-            </div>
-            <div className="input-group">
+          </div>
+          <div className="input-group">
+            <label htmlFor="phoneNumber">Phone Number</label>
             <input
-                type="checkbox"
-                id="subscribe"
-                checked={isSubscribed}
-                onChange={(e) => setIsSubscribed(e.target.checked)}
+              type="text"
+              id="phoneNumber"
+              value={phoneNumber}
+              onChange={(e) => setPhoneNumber(e.target.value)}
+              required
             />
+          </div>
+          <div className="input-group">
             <label htmlFor="subscribe">Subscribe to promotions</label>
-            </div>
-            {/* Card Information */}
-            <h3>Add Card Information</h3>
-            <div className="input-group">
-            <label htmlFor="cardNumber">Card Number</label>
             <input
-                type="text"
-                id="cardNumber"
-                value={cardNumber}
-                onChange={(e) => setCardNumber(e.target.value)}
+              type="checkbox"
+              id="subscribe"
+              checked={isSubscribed}
+              onChange={(e) => setIsSubscribed(e.target.checked)}
             />
-            </div>
-            <div className="input-group">
+          </div>
+          {/* Card Information */}
+          <h3>Add Card Information</h3>
+          <div className="input-group">
             <label htmlFor="cardType">Card Type</label>
             <input
-                type="text"
-                id="cardType"
-                value={cardType}
-                onChange={(e) => setCardNumber(e.target.value)}
+              type="text"
+              id="cardType"
+              value={cardType}
+              onChange={(e) => setCardType(e.target.value)}
             />
-            </div>
-            <div className="input-group">
+          </div>
+          <div className="input-group">
+            <label htmlFor="cardNumber">Card Number</label>
+            <input
+              type="text"
+              id="cardNumber"
+              value={cardNumber}
+              onChange={(e) => setCardNumber(e.target.value)}
+            />
+          </div>
+          <div className="input-group">
             <label htmlFor="cardExpiry">Expiry Date</label>
             <input
-                type="text"
-                id="cardExpiry"
-                placeholder="MM/YY"
-                value={cardExpiry}
-                onChange={(e) => setCardExpiry(e.target.value)}
+              type="text"
+              id="cardExpiry"
+              placeholder="MM/YY"
+              value={cardExpiry}
+              onChange={(e) => setCardExpiry(e.target.value)}
             />
-            </div>
-            <div className="input-group">
-            <label htmlFor="cardCVV">CVV</label>
+          </div>
+          <div className="input-group">
+            <label htmlFor="billingAddr">Billing Address</label>
             <input
-                type="text"
-                id="cardCVV"
-                value={cardCVV}
-                onChange={(e) => setCardCVV(e.target.value)}
+              type="text"
+              id="billingAddr"
+              value={billingAddr}
+              onChange={(e) => setBillingAddr(e.target.value)}
             />
-            </div>
-
-            {/* Shipping Address */}
-            <h3>Change Shipping Address</h3>
-            <div className="input-group">
-            <label htmlFor="shippingAddress">Address</label>
+          </div>
+          {/* Home Address */}
+          <h3>Change Home Address Information</h3>
+          <div className="input-group">
+            <label htmlFor="street">Street</label>
             <input
-                type="text"
-                id="shippingAddress"
-                value={shippingAddress}
-                onChange={(e) => setShippingAddress(e.target.value)}
+              type="text"
+              id="street"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
             />
-            </div>
-            <div className="input-group">
+          </div>
+          <div className="input-group">
             <label htmlFor="city">City</label>
             <input
-                type="text"
-                id="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
+              type="text"
+              id="city"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
             />
-            </div>
-            <div className="input-group">
+          </div>
+          <div className="input-group">
+            <label htmlFor="state">State</label>
+            <input
+              type="text"
+              id="state"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+          </div>
+          <div className="input-group">
             <label htmlFor="zipCode">Zip Code</label>
             <input
-                type="text"
-                id="zipCode"
-                value={zipCode}
-                onChange={(e) => setZipCode(e.target.value)}
+              type="text"
+              id="zipCode"
+              value={zipCode}
+              onChange={(e) => setZipCode(e.target.value)}
             />
-            </div>
-            <div className="actions">
+          </div>
+          <div className="actions">
             <button type="submit">Update Profile</button>
-            </div>
+          </div>
         </form>
-        </div>
+      </div>
     </div>
   );
 }
