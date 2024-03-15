@@ -24,12 +24,42 @@ function EditProfile() {
     setIsSubscribed(true);
   }, []);
 
-  const handleProfileUpdate = (e) => {
+  const handleProfileUpdate = async (e) => {
     e.preventDefault();
-    // Implement the logic to update the profile here
-    // This would typically involve sending a request to your backend API
-    console.log('Profile updated with:', name, password, isSubscribed);
-  };
+    try {
+      const response = await fetch('http://localhost:8080/api/editProfile', {
+        method: 'POST', //because this is an update to information in the database, should this be PUT?
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: name, 
+          password: password,
+          isSubscribed: isSubscribed,
+          phoneNumber: phoneNumber,
+          cardNumber: cardNumber,
+          cardExpiry: cardExpiry,
+          billingAddr: billingAddr,
+          street: street,
+          city: city,
+          state: state,
+          cardType: cardType,
+          zipCode: zipCode
+        })
+      });
+      
+      if (response.ok) {
+        const responseBody = await response.text();
+        console.log(responseBody);
+        console.log('Profile updated with:', name, password, isSubscribed);
+      } else {
+        console.error('Profile edit failed:', response.status, response.statusText);
+      }
+  
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <div class="container">
