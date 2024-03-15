@@ -11,10 +11,16 @@ function Signup() {
   const [cardNumber, setCardNumber] = useState('');
   const [cardExpiry, setCardExpiry] = useState('');
   const [cardCVV, setCardCVV] = useState('');
+  const [cardAddress, setCardAddress] = useState('');
+  const [cardCity, setCardCity] = useState('');
+  const [cardState, setCardState] = useState('');
+  const [cardZipCode, setCardZipCode] = useState('');
   const [shippingAddress, setShippingAddress] = useState('');
   const [city, setCity] = useState('');
+  const [state,setState] = useState('');
   const [zipCode, setZipCode] = useState('');
   const [cardType, setCardType] = useState('');
+  const [promotionSelection, setPromotionSelection] = useState('');
 
   const handleSignup = (e) => {
     e.preventDefault();
@@ -86,12 +92,14 @@ function Signup() {
             placeholder='Retype your password'
           />
         </div>
-        <div className='input-group'>
-          <label>Sign Up For Promotions?</label>
+        <div className='input-group' id="promotions">
+          <label>Sign Up For Promotions?</label> 
           <label for="Yes">Yes</label>
-          <input type="radio" id="Yes" value="Yes" name="promotions-choice"/>
+          <input type="radio" id="Yes" value="Yes" name="promotions-choice"
+          onChange={(e) => setPromotionSelection(e.target.value)}/>
           <label for="no">No</label>
-          <input type="radio" id="No" value="No" name="promotions-choice"/>
+          <input type="radio" id="No" value="No" name="promotions-choice"
+          onChange={(e) => setPromotionSelection(e.target.value)}/>
         </div>
         <div className="actions">
             <a className = "btn btn-primary" href="/register">Sign up</a>
@@ -105,6 +113,7 @@ function Signup() {
 
       <form className="signup-form">
       <h3 className="category-label">Enter Card Information</h3>
+
         <div className="input-group">
         <label htmlFor="cardNumber">Card Number</label>
         <input
@@ -115,6 +124,7 @@ function Signup() {
             placeholder='12345678910123456'
         />
         </div>
+
         <div className="input-group">
             <label htmlFor="cardType">Card Type</label>
             <input
@@ -125,6 +135,7 @@ function Signup() {
                 placeholder='Type in your card Type'
             />
         </div>
+
         <div className="input-group">
         <label htmlFor="cardExpiry">Expiry Date</label>
         <input
@@ -135,6 +146,7 @@ function Signup() {
             onChange={(e) => setCardExpiry(e.target.value)}
         />
         </div>
+
         <div className="input-group">
         <label htmlFor="cardCVV">CVV</label>
         <input
@@ -145,6 +157,51 @@ function Signup() {
             placeholder='123'
         />
         </div>
+
+        <div className="input-group">
+          <label htmlFor="card-address">Billing Address</label>
+          <input 
+              type="text"
+              id="card-address"
+              value={cardAddress}
+              onChange={(e) => setCardAddress(e.target.value)}
+              placeholder="1234 Main Street"
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="card-city">Billing City</label>
+          <input 
+              type="text"
+              id="card-city"
+              value={cardCity}
+              onChange={(e) => setCardCity(e.target.value)}
+              placeholder="Athens"
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="card-state">Billing State</label>
+          <input 
+              type="text"
+              id="card-state"
+              value={cardState}
+              onChange={(e) => setCardState(e.target.value)}
+              placeholder="Georgia"
+          />
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="card-zip-code">Billing Zip Code</label>
+          <input 
+              type="text"
+              id="card-zip-code"
+              value={cardCity}
+              onChange={(e) => setCardZipCode(e.target.value)}
+              placeholder="30604"
+          />
+        </div>
+
         <div className="actions">
             <a className = "Add-Card-Button" href="/register">Add Card</a>
         </div>
@@ -174,6 +231,16 @@ function Signup() {
             onChange={(e) => setCity(e.target.value)}
             placeholder='Athens'
         />
+        </div>
+        <div className='input-group'>
+          <label htmlFor='state'>State</label>
+          <input 
+            type="text"
+            id="state"
+            value={state}
+            onChange={(e) => setState(e.target.value)}
+            placeholder='Georgia'
+            />
         </div>
         <div className="input-group">
         <label htmlFor="zipCode">Zip Code</label>
