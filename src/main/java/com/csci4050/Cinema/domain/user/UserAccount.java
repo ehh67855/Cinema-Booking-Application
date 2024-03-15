@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
+import com.csci4050.Cinema.domain.movie.MovieTime;
+
 // import org.springframework.security.core.GrantedAuthority;
 
 import java.util.List;
+
+import jakarta.persistence.CascadeType;
 
 // import org.springframework.security.core.GrantedAuthority;
 
@@ -21,6 +25,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,15 +42,17 @@ public class UserAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
     private String username;
 
-    @Column(nullable = false)
     private String password;
     
-    @Column(nullable = false)
     private boolean enabled = true;
 
-    @Column(nullable = false)
     private boolean isAdmin;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userAccount")
+    private List<CreditCard> creditCards; 
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private ShippingAdress shippingAddress;
 }
