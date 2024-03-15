@@ -86,7 +86,25 @@ function Signup() {
             placeholder='Retype your password'
           />
         </div>
-        <h3 className="category-label">Enter Card Information</h3>
+        <div className='input-group'>
+          <label>Sign Up For Promotions?</label>
+          <label for="Yes">Yes</label>
+          <input type="radio" id="Yes" value="Yes" name="promotions-choice"/>
+          <label for="no">No</label>
+          <input type="radio" id="No" value="No" name="promotions-choice"/>
+        </div>
+        <div className="actions">
+            <a className = "btn btn-primary" href="/register">Sign up</a>
+        </div>
+        <div className="login-link">
+          Already registered? <a href="/login">Log in</a>
+        </div>
+      </form>
+
+
+
+      <form className="signup-form">
+      <h3 className="category-label">Enter Card Information</h3>
         <div className="input-group">
         <label htmlFor="cardNumber">Card Number</label>
         <input
@@ -104,7 +122,7 @@ function Signup() {
                 id="cardType"
                 value={cardType}
                 onChange={(e) => setCardNumber(e.target.value)}
-                placeholder='Type in your card type'
+                placeholder='Type in your card Type'
             />
         </div>
         <div className="input-group">
@@ -127,7 +145,14 @@ function Signup() {
             placeholder='123'
         />
         </div>
+        <div className="actions">
+            <a className = "Add-Card-Button" href="/register">Add Card</a>
+        </div>
+        </form>
 
+
+
+        <form className='signup-form'>
         {/* Shipping Address */}
         <h3 className='category-label'>Enter Shipping Address</h3>
         <div className="input-group">
@@ -160,13 +185,8 @@ function Signup() {
             placeholder='30604'
         />
         </div>
-
-        
         <div className="actions">
-            <a className = "btn btn-primary" href="/register">Sign up</a>
-        </div>
-        <div className="login-link">
-          Already registered? <a href="/login">Log in</a>
+            <a className = "Add-Address-Button" href="/register">Add Address</a>
         </div>
       </form>
     </div>
