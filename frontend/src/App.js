@@ -7,6 +7,7 @@ import MovieDetails from './components/ViewMovie/MovieDetails/MovieDetails';
 import AdminMoviesPage from './components/admin/AdminMoviesPage';
 import EditMovie from './components/admin/EditMovie';
 import AdminPromotionsPage from './components/admin/AdminPromotionsPage';
+import AdminUsersPage from './components/admin/AdminUsersPage';
 import AdminMainPage from './components/admin/AdminMainPage';
 import BookTickets from './components/BookTicketsPages/BookTickets';
 import TicketOrder from './components/BookTicketsPages/TicketOrder';
@@ -33,6 +34,7 @@ function App() {
       <Route path="/manageMovies" element={<Layout><AdminMoviesPage /></Layout>} />
       <Route path="/editMovie/:id" element={<Layout><EditMovie /></Layout>}/>
       <Route path="/promotions" element={<Layout><AdminPromotionsPage /></Layout>} />
+      <Route path="/manageUsers" element={<Layout><AdminUsersPage /></Layout>} />
       <Route path="/bookTickets" element={<Layout><BookTickets /></Layout>} />
       <Route path="/ticketOrder" element={<Layout><TicketOrder /></Layout>} />
       <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
