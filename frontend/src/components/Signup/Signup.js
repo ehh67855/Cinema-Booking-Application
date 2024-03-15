@@ -36,6 +36,7 @@ function Signup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder='example@gmail.com'
           />
           
         </div>
@@ -47,6 +48,7 @@ function Signup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder='123-456-7890'
           />
           
         </div>
@@ -59,6 +61,7 @@ function Signup() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            placeholder='Bob Jones'
           />
         </div>
         <div className="input-group">
@@ -69,6 +72,7 @@ function Signup() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            placeholder='Enter a password'
           />
         </div>
         <div className="input-group">
@@ -79,6 +83,7 @@ function Signup() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            placeholder='Retype your password'
           />
         </div>
         <h3 className="category-label">Enter Card Information</h3>
@@ -89,6 +94,7 @@ function Signup() {
             id="cardNumber"
             value={cardNumber}
             onChange={(e) => setCardNumber(e.target.value)}
+            placeholder='12345678910123456'
         />
         </div>
         <div className="input-group">
@@ -98,6 +104,7 @@ function Signup() {
                 id="cardType"
                 value={cardType}
                 onChange={(e) => setCardNumber(e.target.value)}
+                placeholder='Type in your card type'
             />
         </div>
         <div className="input-group">
@@ -117,6 +124,7 @@ function Signup() {
             id="cardCVV"
             value={cardCVV}
             onChange={(e) => setCardCVV(e.target.value)}
+            placeholder='123'
         />
         </div>
 
@@ -129,6 +137,7 @@ function Signup() {
             id="shippingAddress"
             value={shippingAddress}
             onChange={(e) => setShippingAddress(e.target.value)}
+            placeholder='1234 Main Street'
         />
         </div>
         <div className="input-group">
@@ -138,6 +147,7 @@ function Signup() {
             id="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            placeholder='Athens'
         />
         </div>
         <div className="input-group">
@@ -147,6 +157,7 @@ function Signup() {
             id="zipCode"
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value)}
+            placeholder='30604'
         />
         </div>
 
