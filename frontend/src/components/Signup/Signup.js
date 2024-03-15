@@ -24,9 +24,11 @@ function Signup() {
 
   return (
     <div className="signup-container">
+      <h2 id="signup-label">Sign Up</h2>
       <form className="signup-form" onSubmit={handleSignup}>
-        <h2>Sign Up</h2>
+      <h3 className="category-label">Personal Information</h3>
         <div className="input-group">
+          <br/>
           <label htmlFor="email">Email *</label>
           <input
             type="email"
@@ -78,7 +80,8 @@ function Signup() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
-          <h3>Enter Card Information</h3>
+        </div>
+        <h3 className="category-label">Enter Card Information</h3>
         <div className="input-group">
         <label htmlFor="cardNumber">Card Number</label>
         <input
@@ -118,7 +121,7 @@ function Signup() {
         </div>
 
         {/* Shipping Address */}
-        <h3>Enter Shipping Address</h3>
+        <h3 className='category-label'>Enter Shipping Address</h3>
         <div className="input-group">
         <label htmlFor="shippingAddress">Address</label>
         <input
@@ -147,7 +150,7 @@ function Signup() {
         />
         </div>
 
-        </div>
+        
         <div className="actions">
             <a className = "btn btn-primary" href="/register">Sign up</a>
         </div>
