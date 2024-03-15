@@ -18,6 +18,8 @@ import SignupConfirmation from './components/Signup/SignupConfirmation';
 import EditProfile from './components/EditProfile/EditProfile';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 
+import './index.css';
+
 localStorage.setItem("userStatus","unregistered");
 
 function App() {

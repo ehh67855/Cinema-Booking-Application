@@ -39,9 +39,9 @@ function Login() {
 
   return (
     <div className="login-container">
+      <div id="login-banner">Login</div>
       <form className="login-form" onSubmit={handleLogin}>
         
-        <h2>Login</h2>
         <div className="input-group">
           <label htmlFor="username">Email</label>
           <input
@@ -64,13 +64,19 @@ function Login() {
           />
         </div>
 
-        <button type="submit" className="btn btn-primary login-button">Log In</button>
-
+        
         <div className="links">
           <a href="/forgot-password">Forgot Password?</a>
           <br />
-          Not registered yet? <a href="/register">Sign up</a>
+          <div id="login-buttons">
+            <button type="submit" className="btn btn-primary login-button">Log In</button>
+            <a href="/register" formnovalidate="formnovalidate">
+              <button className="btn btn-primary login-button" formnovalidate="formnovalidate">Register</button>
+            </a>
+          </div>
+          
         </div>
+        
       </form>
     </div>
   );
