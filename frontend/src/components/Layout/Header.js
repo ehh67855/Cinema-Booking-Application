@@ -10,17 +10,17 @@ function Header() {
     const renderOptions = () => {
         switch (userStatus) {
         case 'unregistered':
-            return <div>
+            return <div className="profile-links">
                 <a id = "login" href = "/login" >Login</a>
                 <a id = "signup" href = "/register" >Signup</a>
             </div>;
         case 'registered':
-            return <div>
+            return <div className="profile-links">
                 <a id = "logout" href="/logout">Logout</a>
                 <a id = "edit-profile" href="/edit-profile">Edit Profile</a>
             </div>;
         case 'admin':
-            return <div>
+            return <div className="profile-links">
                 <a id = "logout" href="/logout">Logout</a>
                 <a id = "edit-profile" href="/edit-profile">Edit Profile</a>
             </div>;

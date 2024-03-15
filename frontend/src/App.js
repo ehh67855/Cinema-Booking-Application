@@ -19,6 +19,8 @@ import SignupConfirmation from './components/Signup/SignupConfirmation';
 import EditProfile from './components/EditProfile/EditProfile';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 
+import './index.css';
+
 localStorage.setItem("userStatus","unregistered");
 
 function App() {
@@ -40,6 +42,7 @@ function App() {
       <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
       <Route path="/orderConfirmation" element={<Layout><OrderConfirm /></Layout>} />
       <Route path="/forgot-password" element={<Layout><ForgotPassword></ForgotPassword></Layout>}/>
+      <Route path="/SignupConfirmation" element={<Layout><SignupConfirmation></SignupConfirmation></Layout>}/>
       <Route path="*" element={<Layout><NoPage /></Layout>} />
     </Routes>
   );

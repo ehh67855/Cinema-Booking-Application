@@ -1,15 +1,30 @@
 .login-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh; /* Full viewport height */
+  width: 100vw;
+}
+
+.login-container>#login-banner{
+  height: 12vh;
+  width: 50vw;
+  background-color: #A46767;
+  text-align: center;
+  font-size: 31px;
+  font-family: 'Itim';
 }
 
 .login-form {
-  width: 300px;
+  width: 50vw;
   padding: 20px;
-  border: 1px solid #ccc;
+  
   border-radius: 5px;
+}
+
+.login-form h2 {
+  text-align: center;
 }
 
 .input-group {
@@ -32,8 +47,19 @@
   margin-top: 20px;
 }
 
-.actions button {
-  width: 100%;
+.links {
+  display:flex;
+  flex-direction: column;
+}
+
+.links>#login-buttons{
+  display:flex;
+  justify-content: center;
+  justify-content: space-around;
+}
+
+.links>#login-buttons>.actions {
+  width: 50%;
   padding: 10px;
   background-color: #007bff;
   color: white;

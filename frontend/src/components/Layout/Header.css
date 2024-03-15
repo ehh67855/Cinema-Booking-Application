@@ -1,10 +1,15 @@
 header {
-  padding: 30px; /* Adjust padding as needed */
-  background-color: #333; /* Background color of the header */
-  color: #fff; /* Text color */
+  padding: 20px; /* Adjust padding as needed */
+  background-color: #34377E; /* Background color of the header */
+  color: #050202; /* Text color */
 
 }
 
+.profile-links{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 header a {
   color: inherit; /* This makes the link use the text color of the parent, removing the typical blue color */
   text-decoration: none; /* Removes the underline from the link */
