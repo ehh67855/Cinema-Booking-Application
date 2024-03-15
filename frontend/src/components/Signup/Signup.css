@@ -3,27 +3,9 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 200vh;
   width: 100vw;
   padding: 20px;
-  overflow: auto; /* Enables scrolling if the content overflows */
-}
-
-#signup-label {
-  align-self: center;
-  height: 25vh;
-  width: 50vw;
-  background-color: #A46767;
-  text-align: center;
-  font-size: 31px;
-  font-family: 'Itim';
-}
-
-.category-label {
-  text-align: center;
-  background-color: #A46767;
-  height: 50px;
-  width: inherit;
 }
 
 .signup-form {
