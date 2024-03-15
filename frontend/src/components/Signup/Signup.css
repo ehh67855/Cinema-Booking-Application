@@ -21,6 +21,10 @@
   flex-direction: column;
 }
 
+#promotions {
+  display: flex;
+  justify-content: space-around;
+}
 .input-group {
   margin-bottom: 15px;
 }
