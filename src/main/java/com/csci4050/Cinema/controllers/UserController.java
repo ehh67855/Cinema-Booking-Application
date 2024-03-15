@@ -23,7 +23,9 @@ public class UserController {
 
     @PostMapping("login")
     public ResponseEntity<String> login(@RequestBody LoginDTO login) {
-        return userService.isValidUser(login.getUsername(),login.getPassword()) ? 
+        System.out.println(login);
+        return userService.isValidUser(login.getUsername(),login.getPassword()) 
+        ? 
          new ResponseEntity<>(String.valueOf(userService.getUserByUsername(login.getUsername()).isAdmin()), HttpStatus.OK)
         :
          new ResponseEntity<>("Unsuccessful login", HttpStatus.BAD_REQUEST);
