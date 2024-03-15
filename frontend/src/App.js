@@ -40,6 +40,7 @@ function App() {
       <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
       <Route path="/orderConfirmation" element={<Layout><OrderConfirm /></Layout>} />
       <Route path="/forgot-password" element={<Layout><ForgotPassword></ForgotPassword></Layout>}/>
+      <Route path="/SignupConfirmation" element={<Layout><SignupConfirmation></SignupConfirmation></Layout>}/>
       <Route path="*" element={<Layout><NoPage /></Layout>} />
     </Routes>
   );
