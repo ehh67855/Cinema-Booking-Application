@@ -65,4 +65,5 @@ public class Movie {
     private List<MovieTime> showings = new ArrayList<MovieTime>();
 
     
+    
 }

@@ -92,13 +92,14 @@ function Signup() {
             placeholder='Retype your password'
           />
         </div>
-        <div className='input-group' id="promotions">
+        <div id="promotions">
           <label>Sign Up For Promotions?</label> 
+          <br />
           <label for="Yes">Yes</label>
-          <input type="radio" id="Yes" value="Yes" name="promotions-choice"
+          <input className="Promotions-Buttons" type="radio" id="Yes" value="Yes" name="promotions-choice"
           onChange={(e) => setPromotionSelection(e.target.value)}/>
           <label for="no">No</label>
-          <input type="radio" id="No" value="No" name="promotions-choice"
+          <input className="Promotions-Buttons" type="radio" id="No" value="No" name="promotions-choice"
           onChange={(e) => setPromotionSelection(e.target.value)}/>
         </div>
         <div className="actions">

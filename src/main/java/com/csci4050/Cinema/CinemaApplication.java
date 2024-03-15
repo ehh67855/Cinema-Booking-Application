@@ -9,9 +9,11 @@ import org.springframework.context.annotation.Bean;
 import com.csci4050.Cinema.domain.movie.Movie;
 import com.csci4050.Cinema.domain.movie.MovieTime;
 import com.csci4050.Cinema.domain.movie.Review;
+import com.csci4050.Cinema.domain.user.UserAccount;
 import com.csci4050.Cinema.domain.movie.Rating;
 
 import com.csci4050.Cinema.repository.MovieRepository;
+import com.csci4050.Cinema.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -26,12 +28,26 @@ public class CinemaApplication {
 	}
 
 	@Bean
-	CommandLineRunner run(@Autowired MovieRepository movieRepo) {
+	CommandLineRunner run(@Autowired MovieRepository movieRepo, @Autowired UserRepository userRepo) {
 		return (args) -> {
 			createDummyMovies(movieRepo); 
+			createDummyUser(userRepo);
 		};
 	}
 
+	public void createDummyUser(UserRepository userRepo) {
+		UserAccount user1 = new UserAccount();
+		user1.setUsername("user");
+		user1.setPassword("pass");
+		user1.setAdmin(false);
+
+		UserAccount user2 = new UserAccount();
+		user2.setUsername("admin");
+		user2.setPassword("pass");
+		user2.setAdmin(true);
+
+		userRepo.save(user1);
+	}
 	
 	public void createDummyMovies(MovieRepository movieRepo) {
 		String[] movieTitles = {
@@ -72,8 +88,6 @@ public class CinemaApplication {
 			"https://www.youtube.com/watch?v=omMvU7J8uf8",
 			"https://www.youtube.com/watch?v=flr0T_2Kzyg",
 			"https://www.youtube.com/watch?v=8wD3AnHpUjE"
-
-
 		};
 
 		String[] categories = {
