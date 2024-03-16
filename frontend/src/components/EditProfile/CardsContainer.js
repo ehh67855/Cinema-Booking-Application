@@ -6,9 +6,9 @@ const CardsContainer = ({cards}) => {
     return (
         <>
         <div className="container">
-            <div className="row">
+            <div>
                 {cards.map((card) => (
-                <div className="col-md-4" key={card.id}>
+                <div key={card.id}>
                     <CardCard card={card} />
                 </div>
                 ))}

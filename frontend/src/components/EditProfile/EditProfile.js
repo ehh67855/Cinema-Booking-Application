@@ -3,7 +3,11 @@ import './EditProfile.css'; // Assuming you have some CSS for styling
 import CardsContainer from './CardsContainer';
 
 function EditProfile() {
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState([
+    // These are dummy payment cards.
+    {cardType: "Visa", cardNumber: "69", expirationDate: "10/1984", billingAdress: "1111 Rock Dr"},
+    {cardType: "Visa", cardNumber: "420", expirationDate: "10/1984", billingAdress: "1111 Rock Dr"}
+  ]);
 
   useEffect(() => {
     fetchCards();
@@ -28,9 +32,9 @@ function EditProfile() {
   const [state, setState] = useState('');
   const [cardType, setCardType] = useState('');
   const [zipCode, setZipCode] = useState('');
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  // const [username, setUsername] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
@@ -46,13 +50,13 @@ function EditProfile() {
           isSubscribed: isSubscribed,
           phoneNumber: phoneNumber,
           cardNumber: cardNumber,
-          cardExpiry: cardExpiry,
-          billingAddr: billingAddr,
-          street: street,
+          expirationDate: cardExpiry,
+          billingAdress: billingAddr,
+          adress: street,
           city: city,
           state: state,
           cardType: cardType,
-          zipCode: zipCode
+          zipcode: zipCode
         })
       });
       
@@ -131,7 +135,7 @@ function EditProfile() {
             />
           </div>
           <div className="input-group">
-            <label htmlFor="cardExpiry">Expiry Date</label>
+            <label htmlFor="cardExpiry">Expiration Date</label>
             <input
               type="text"
               id="cardExpiry"
