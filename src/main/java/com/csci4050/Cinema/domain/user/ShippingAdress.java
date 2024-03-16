@@ -21,5 +21,7 @@ public class ShippingAdress {
 
     private String city;
 
+    private String state;
+
     private Integer zipcode;
 }

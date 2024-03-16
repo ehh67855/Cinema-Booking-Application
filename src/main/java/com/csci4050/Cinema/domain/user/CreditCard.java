@@ -26,7 +26,7 @@ public class CreditCard {
 
     private LocalDate expirationDate;
 
-    private Integer CVV;
+    private String billingAdress;
     
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_account_id") 

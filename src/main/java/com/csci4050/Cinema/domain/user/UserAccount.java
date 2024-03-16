@@ -50,6 +50,8 @@ public class UserAccount {
 
     private boolean isAdmin;
 
+    private boolean promotionsEnabled;
+
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userAccount")
     private List<CreditCard> creditCards; 
 

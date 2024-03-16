@@ -1,5 +1,9 @@
 package com.csci4050.Cinema.controllers;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.csci4050.Cinema.domain.DTOs.LoginDTO;
 import com.csci4050.Cinema.domain.DTOs.RegisterDTO;
+import com.csci4050.Cinema.domain.user.CreditCard;
 import com.csci4050.Cinema.domain.user.UserAccount;
 import com.csci4050.Cinema.service.UserService;
 
@@ -24,7 +29,6 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDTO login) {
-        System.out.println(login);
         return userService.isValidUser(login.getUsername(),login.getPassword()) 
         ? 
          new ResponseEntity<>(String.valueOf(userService.getUserByUsername(login.getUsername()).isAdmin()), HttpStatus.OK)
@@ -34,7 +38,8 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDTO register) {
-        System.out.println(register);
-        return new ResponseEntity<>("Unsuccessful login", HttpStatus.BAD_REQUEST);
+        
+        userService.saveUser(register);
+        return new ResponseEntity<>("Successful Registration", HttpStatus.BAD_REQUEST);
     }
 }

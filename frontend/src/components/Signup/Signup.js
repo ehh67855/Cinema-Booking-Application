@@ -22,8 +22,11 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    // Implement signup logic here
-    try {
+    postUser();
+  };
+
+  const postUser = async () => {
+        try {
       const response = await fetch('http://localhost:8080/api/auth/register', {
         method: 'POST',
         headers: {
@@ -59,8 +62,7 @@ function Signup() {
     } catch (error) {
       console.error(error);
     }
-
-  };
+  }
 
   return (
     <div className="signup-container">
