@@ -108,6 +108,7 @@ function Signup() {
         <div className="login-link">
           Already registered? <a href="/login">Log in</a>
         </div>
+        <label>* Required</label>
       </form>
 
 

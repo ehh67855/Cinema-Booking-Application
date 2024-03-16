@@ -21,6 +21,10 @@
   flex-direction: column;
 }
 
+.category-label{
+  text-align: center;
+  background-color: #A46767;
+}
 #promotions {
   display: flex;
   justify-content: space-around;
