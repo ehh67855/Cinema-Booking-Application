@@ -7,6 +7,9 @@ function EditProfile() {
 
   useEffect(() => {
     fetchCards();
+
+    //There is also going to be a function that gets the logged in user's info to put in the form fields below.
+    //What won't be filled is fields that have to do with payment cards (this includes billing address).
   }, []);
   
   const fetchCards = async () => {
