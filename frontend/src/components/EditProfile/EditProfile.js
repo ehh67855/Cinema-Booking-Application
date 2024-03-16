@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import './EditProfile.css'; // Assuming you have some CSS for styling
+import CardsContainer from './CardsContainer';
 
 function EditProfile() {
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    fetchCards();
+  }, []);
+  
+  const fetchCards = async () => {
+    //Implementation for getting the list of the user's payment cards from the database
+  }
+
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -17,12 +28,6 @@ function EditProfile() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-
-
-  useEffect(() => {
-    setName('John Doe'); 
-    setIsSubscribed(true);
-  }, []);
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
@@ -141,6 +146,9 @@ function EditProfile() {
               onChange={(e) => setBillingAddr(e.target.value)}
             />
           </div>
+          {/* List of User's Payment Cards */}
+          <h4>Your Cards:</h4>
+          <CardsContainer cards={cards} />
           {/* Home Address */}
           <h3>Change Home Address Information</h3>
           <div className="input-group">
