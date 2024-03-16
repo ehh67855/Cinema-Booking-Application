@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csci4050.Cinema.domain.DTOs.LoginDTO;
+import com.csci4050.Cinema.domain.DTOs.RegisterDTO;
 import com.csci4050.Cinema.domain.user.UserAccount;
 import com.csci4050.Cinema.service.UserService;
 
@@ -21,7 +22,7 @@ public class UserController {
 
     @Autowired UserService userService;
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDTO login) {
         System.out.println(login);
         return userService.isValidUser(login.getUsername(),login.getPassword()) 
@@ -29,5 +30,11 @@ public class UserController {
          new ResponseEntity<>(String.valueOf(userService.getUserByUsername(login.getUsername()).isAdmin()), HttpStatus.OK)
         :
          new ResponseEntity<>("Unsuccessful login", HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody RegisterDTO register) {
+        System.out.println(register);
+        return new ResponseEntity<>("Unsuccessful login", HttpStatus.BAD_REQUEST);
     }
 }

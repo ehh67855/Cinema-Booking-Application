@@ -17,15 +17,6 @@ function Signup() {
   const [zipCode, setZipCode] = useState('');
   const [email, setEmail] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  
-  // const [username, setUsername] = useState('');
-  // const [cardCVV, setCardCVV] = useState('');
-  // const [cardAddress, setCardAddress] = useState('');
-  // const [cardCity, setCardCity] = useState('');
-  // const [cardState, setCardState] = useState('');
-  // const [cardZipCode, setCardZipCode] = useState('');
-  // const [shippingAddress, setShippingAddress] = useState('');
-  // const [promotionSelection, setPromotionSelection] = useState('');
 
   const navigate = useNavigate();
 
@@ -52,7 +43,6 @@ function Signup() {
           cardType: cardType,
           zipCode: zipCode,
           email: email,
-          confirmPassword: confirmPassword,
         })
       });
       
@@ -70,13 +60,13 @@ function Signup() {
       console.error(error);
     }
 
-    console.log('Signup attempt with:', name, email, password, confirmPassword);
   };
 
   return (
     <div className="signup-container">
       <h2 id="signup-label">Sign Up</h2>
-      <form className="signup-form" onSubmit={handleSignup}>
+
+      <form>
       <h3 className="category-label">Personal Information</h3>
         <div className="input-group">
           <br/>
@@ -161,17 +151,8 @@ function Signup() {
             onChange={(e) => setIsSubscribed(e.target.value)}
           />
         </div>
-
-        <div className="actions">
-            <a className = "btn btn-primary" href="/register">Sign up</a>
-        </div>
-        <div className="login-link">
-          Already registered? <a href="/login">Log in</a>
-        </div>
-      </form>
-
-      <form className="signup-form">
-        <h3 className="category-label">Enter Card Information</h3>
+        <br />
+        <h3 className="category-label">Enter Card Information (Optional)</h3>
 
         <div className="input-group">
           <label htmlFor="cardNumber">Card Number</label>
@@ -206,17 +187,6 @@ function Signup() {
           />
         </div>
 
-        {/* <div className="input-group">
-          <label htmlFor="cardCVV">CVV</label>
-          <input
-            type="text"
-            id="cardCVV"
-            value={cardCVV}
-            onChange={(e) => setCardCVV(e.target.value)}
-            placeholder='123'
-          />
-        </div> */}
-
         <div className="input-group">
           <label htmlFor="card-address">Billing Address</label>
           <input 
@@ -227,59 +197,9 @@ function Signup() {
             placeholder="1234 Main Street"
           />
         </div>
-
-        {/* <div className="input-group">
-          <label htmlFor="card-city">Billing City</label>
-          <input 
-            type="text"
-            id="card-city"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            placeholder="Athens"
-          />
-        </div> */}
-
-        {/* <div className="input-group">
-          <label htmlFor="card-state">Billing State</label>
-          <input 
-            type="text"
-            id="card-state"
-            value={state}
-            onChange={(e) => setState(e.target.value)}
-            placeholder="Georgia"
-          />
-        </div> */}
-
-        {/* <div className="input-group">
-          <label htmlFor="card-zip-code">Billing Zip Code</label>
-          <input 
-              type="number"
-              id="card-zip-code"
-              value={zipCode}
-              onChange={(e) => setZipCode(e.target.value)}
-              placeholder="30604"
-          />
-        </div> */}
-
-        <div className="actions">
-            <a className = "Add-Card-Button" href="/register">Add Card</a>
-        </div>
-      </form>
-
-      <form className='signup-form'>
+        <br />
         {/* Home Address */}
-        <h3 className='category-label'>Enter Home Address Information</h3>
-        
-        {/* <div className="input-group">
-          <label htmlFor="shippingAddress">Address</label>
-          <input
-            type="text"
-            id="shippingAddress"
-            value={shippingAddress}
-            onChange={(e) => setShippingAddress(e.target.value)}
-            placeholder='1234 Main Street'
-          />
-        </div> */}
+        <h3 className='category-label'>Enter Home Address Information (Optional)</h3>
 
         <div className="input-group">
           <label htmlFor="street">Street</label>
@@ -326,9 +246,12 @@ function Signup() {
         </div>
 
         <div className="actions">
-            <a className = "Add-Address-Button" href="/register">Add Address</a>
+            <a className = "btn btn-primary" onClick={handleSignup}>Sign up</a>
         </div>
-      </form>
+        <div className="login-link">
+          Already registered? <a href="/login">Log in</a>
+        </div>
+        </form>
     </div>
   );
 }
