@@ -25,6 +25,7 @@ function Login() {
       const responseBody = await response.text();
       console.log("isAdmin", responseBody); 
       responseBody === "true" ? localStorage.setItem("userStatus","admin") : localStorage.setItem("userStatus","registered");
+      localStorage.setItem("username", username);
       if (localStorage.getItem('userStatus') === "admin") {
         navigate('/adminMainPage');
       } else {

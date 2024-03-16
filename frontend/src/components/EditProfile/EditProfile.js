@@ -32,6 +32,7 @@ function EditProfile() {
   const [state, setState] = useState('');
   const [cardType, setCardType] = useState('');
   const [zipCode, setZipCode] = useState();
+  const [isAdmin, setIsAdmin] = useState(false);
   // const [username, setUsername] = useState('');
   // const [email, setEmail] = useState('');
   // const [confirmPassword, setConfirmPassword] = useState('');
@@ -56,7 +57,8 @@ function EditProfile() {
           city: city,
           state: state,
           cardType: cardType,
-          zipcode: zipCode
+          zipcode: zipCode,
+          isAdmin: isAdmin,
         })
       });
       
@@ -70,6 +72,22 @@ function EditProfile() {
   
     } catch (error) {
       console.error(error);
+    }
+  }
+
+  function AdminSet() {
+    if(localStorage.getItem("userStatus") === "admin") {
+      return (
+        <div className="input-group">
+          <label htmlFor="adminSet">Give Admin Status</label>
+          <input
+            type="checkbox"
+            id="adminSet"
+            checked={isAdmin}
+            onChange={(e) => setIsAdmin(e.target.checked)}
+          />
+        </div>
+      )
     }
   }
 
@@ -114,6 +132,8 @@ function EditProfile() {
               onChange={(e) => setIsSubscribed(e.target.checked)}
             />
           </div>
+          {/* Conditionally Rendered Admin Setting */}
+          <AdminSet />
           {/* Card Information */}
           <h3>Add Card Information</h3>
           <div className="input-group">
