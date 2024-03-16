@@ -73,7 +73,7 @@ function EditProfile() {
     <div class="container">
       <div className="edit-profile-container">
         <form className="edit-profile-form" onSubmit={handleProfileUpdate}>
-          <h3>Edit User Information</h3>
+          <h3 className='category-header'>Edit User Information</h3>
           <div className="input-group">
             <label htmlFor="name">Name</label>
             <input
@@ -111,7 +111,7 @@ function EditProfile() {
             />
           </div>
           {/* Card Information */}
-          <h3>Add Card Information</h3>
+          <h3 className='category-header'>Add Card Information</h3>
           <div className="input-group">
             <label htmlFor="cardType">Card Type</label>
             <input
@@ -150,10 +150,10 @@ function EditProfile() {
             />
           </div>
           {/* List of User's Payment Cards */}
-          <h4>Your Cards:</h4>
+          <h3 className='category-header'>Your Cards:</h3>
           <CardsContainer cards={cards} />
           {/* Home Address */}
-          <h3>Change Home Address Information</h3>
+          <h4>Change Home Address Information</h4>
           <div className="input-group">
             <label htmlFor="street">Street</label>
             <input

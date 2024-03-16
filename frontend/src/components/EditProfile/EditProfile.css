@@ -53,3 +53,8 @@
 .actions button:hover {
   background-color: #218838;
 }
+
+.category-header {
+  text-align: center;
+  background-color: #A46767;
+}
