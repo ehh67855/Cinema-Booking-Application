@@ -24,14 +24,14 @@ function EditProfile() {
   const [password, setPassword] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
+  const [cardNumber, setCardNumber] = useState();
   const [cardExpiry, setCardExpiry] = useState('');
   const [billingAddr, setBillingAddr] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [cardType, setCardType] = useState('');
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState();
   // const [username, setUsername] = useState('');
   // const [email, setEmail] = useState('');
   // const [confirmPassword, setConfirmPassword] = useState('');
@@ -98,7 +98,7 @@ function EditProfile() {
           <div className="input-group">
             <label htmlFor="phoneNumber">Phone Number</label>
             <input
-              type="text"
+              type="tel"
               id="phoneNumber"
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
@@ -128,7 +128,7 @@ function EditProfile() {
           <div className="input-group">
             <label htmlFor="cardNumber">Card Number</label>
             <input
-              type="text"
+              type="number"
               id="cardNumber"
               value={cardNumber}
               onChange={(e) => setCardNumber(e.target.value)}
@@ -137,7 +137,7 @@ function EditProfile() {
           <div className="input-group">
             <label htmlFor="cardExpiry">Expiration Date</label>
             <input
-              type="text"
+              type="month"
               id="cardExpiry"
               placeholder="MM/YY"
               value={cardExpiry}
@@ -188,7 +188,7 @@ function EditProfile() {
           <div className="input-group">
             <label htmlFor="zipCode">Zip Code</label>
             <input
-              type="text"
+              type="number"
               id="zipCode"
               value={zipCode}
               onChange={(e) => setZipCode(e.target.value)}

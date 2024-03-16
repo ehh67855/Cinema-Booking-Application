@@ -7,14 +7,14 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [cardNumber, setCardNumber] = useState('');
+  const [cardNumber, setCardNumber] = useState();
   const [cardExpiry, setCardExpiry] = useState('');
   const [billingAddr, setBillingAddr] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
   const [cardType, setCardType] = useState('');
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState();
   const [email, setEmail] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -84,7 +84,7 @@ function Signup() {
           
         </div>
         <div className="input-group">
-          <label htmlFor="email">Phone Number *</label>
+          <label htmlFor="phone">Phone Number *</label>
           <input
             type="tel"
             id="phone"
@@ -96,7 +96,7 @@ function Signup() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="email">Name *</label>
+          <label htmlFor="name">Name *</label>
           <input
             type="text"
             id="name"
