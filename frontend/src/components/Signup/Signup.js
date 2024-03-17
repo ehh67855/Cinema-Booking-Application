@@ -3,30 +3,40 @@ import './Signup.css'; // Assuming you'll have similar styling with possible add
 import { useNavigate } from 'react-router-dom';
 
 function Signup() {
+  // personal info
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  // misc info
   const [isSubscribed, setIsSubscribed] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState('');
-  const [cardNumber, setCardNumber] = useState();
+  // card info
+  const [cardNumber, setCardNumber] = useState('');
+  const [cardType, setCardType] = useState('');
   const [cardExpiry, setCardExpiry] = useState('');
   const [billingAddr, setBillingAddr] = useState('');
+  // home address info
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
-  const [cardType, setCardType] = useState('');
-  const [zipCode, setZipCode] = useState();
-  const [email, setEmail] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [zipCode, setZipCode] = useState('');
+  
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    postUser();
+    if(!(cardNumber != "" && cardType != "" && cardExpiry != "" && billingAddr != "")) {
+      alert("Please fill out all card fields when entering in new card.");
+    } else if(password != confirmPassword) {
+      alert("Password and Confirm Password do not match.");
+    } else {
+      postUser();
+    }
   };
 
   const postUser = async () => {
-        try {
+    try {
       const response = await fetch('http://localhost:8080/api/auth/register', {
         method: 'POST',
         headers: {
@@ -162,6 +172,7 @@ function Signup() {
           <label htmlFor="cardNumber">Card Number</label>
           <input
             type="number"
+            inputMode='numeric'
             id="cardNumber"
             value={cardNumber}
             onChange={(e) => setCardNumber(e.target.value)}
@@ -242,6 +253,7 @@ function Signup() {
           <label htmlFor="zipCode">Zip Code</label>
           <input
             type="number"
+            inputMode='numeric'
             id="zipCode"
             value={zipCode}
             onChange={(e) => setZipCode(e.target.value)}
