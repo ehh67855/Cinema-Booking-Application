@@ -2,6 +2,7 @@ package com.csci4050.Cinema.service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,9 +33,11 @@ public class UserService {
     public ResponseEntity<String> saveUser(RegisterDTO register) {
         System.out.println(register);
 
-        if (userRepo.findByUsername(register.getEmail()).isPresent()) {
+        Optional<UserAccount> existingUser = userRepo.findByUsername(register.getEmail());
+        if (existingUser.isPresent()) {
             return new ResponseEntity<>("Email already exists", HttpStatus.BAD_REQUEST);
         }
+
 
         UserAccount user = new UserAccount();
         user.setAdmin(false);
@@ -67,7 +70,7 @@ public class UserService {
 
         userRepo.save(user);
 
-        return new ResponseEntity<>("Registration Successful", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Registration Successful", HttpStatus.OK);
     }
 
     public ResponseEntity<UserAccount> getUser(String username) {

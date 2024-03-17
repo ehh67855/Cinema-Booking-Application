@@ -42,11 +42,12 @@ public class CinemaApplication {
 		user1.setAdmin(false);
 
 		UserAccount user2 = new UserAccount();
-		user2.setUsername("user@user.com");
+		user2.setUsername("admin@user.com");
 		user2.setPassword("pass");
 		user2.setAdmin(true);
 
 		userRepo.save(user1);
+		userRepo.save(user2);
 	}
 	
 	public void createDummyMovies(MovieRepository movieRepo) {

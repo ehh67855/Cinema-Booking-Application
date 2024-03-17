@@ -58,6 +58,7 @@ function Signup() {
         navigate('/register-confirmation');
       } else {
         console.error('Signup failed:', response.status, response.statusText);
+        alert("email already in use");
       }
   
     } catch (error) {

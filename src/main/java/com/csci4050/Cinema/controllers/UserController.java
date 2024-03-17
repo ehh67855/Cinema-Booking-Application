@@ -40,13 +40,11 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDTO register) {
-        userService.saveUser(register);
-        return new ResponseEntity<>("Successful Registration", HttpStatus.OK);
+        return userService.saveUser(register);
     }
 
     @GetMapping("/get-user")
     public ResponseEntity<UserAccount> getUser(@RequestParam String username) {
-        System.out.println(username);
         return new ResponseEntity<>(userService.getUserByUsername(username), HttpStatus.OK);
     }
 
