@@ -42,6 +42,8 @@ public class UserAccount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private String name;
+
     private String username;
 
     private String password;
@@ -56,5 +58,5 @@ public class UserAccount {
     private List<CreditCard> creditCards; 
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private ShippingAdress shippingAddress;
+    private ShippingAdress homeAddress;
 }

@@ -8,9 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.csci4050.Cinema.domain.DTOs.LoginDTO;
@@ -38,8 +40,14 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterDTO register) {
-        
         userService.saveUser(register);
-        return new ResponseEntity<>("Successful Registration", HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>("Successful Registration", HttpStatus.OK);
     }
+
+    @GetMapping("/get-user")
+    public ResponseEntity<UserAccount> getUser(@RequestParam String username) {
+        System.out.println(username);
+        return new ResponseEntity<>(userService.getUserByUsername(username), HttpStatus.OK);
+    }
+
 }

@@ -21,8 +21,6 @@ public class RegisterDTO {
     private String cardType;
     private String zipCode;
     private String email;
-
-
 }
 
 // body: JSON.stringify({

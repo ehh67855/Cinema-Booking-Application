@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.csci4050.Cinema.domain.DTOs.RegisterDTO;
@@ -27,8 +29,13 @@ public class UserService {
         return userRepo.findByUsername(username).get();
     }
 
-    public String saveUser(RegisterDTO register) {
+    public ResponseEntity<String> saveUser(RegisterDTO register) {
         System.out.println(register);
+
+        if (userRepo.findByUsername(register.getEmail()).isPresent()) {
+            return new ResponseEntity<>("Email already exists", HttpStatus.BAD_REQUEST);
+        }
+
         UserAccount user = new UserAccount();
         user.setAdmin(false);
         user.setUsername(register.getEmail());
@@ -41,7 +48,7 @@ public class UserService {
             user.setPromotionsEnabled(false);
         }
         
-        if (!register.getCardNumber().equals("") && register.getCardNumber() != null) {
+        if (register.getCardNumber() != null && !register.getCardNumber().equals("")) {
             CreditCard card = new CreditCard();
             card.setCardType(register.getCardType());
             card.setExpirationDate(LocalDate.parse(register.getCardExpiry() + "-01"));
@@ -49,16 +56,25 @@ public class UserService {
             user.setCreditCards(List.of(card));
         }
 
-        if (!register.getStreet().equals("") && register.getStreet() != null) {
-            ShippingAdress shippingAdress = new ShippingAdress();
-            shippingAdress.setAdress(register.getStreet());
-            shippingAdress.setCity(register.getCity());
-            shippingAdress.setState(register.getState());
-            shippingAdress.setZipcode(Integer.valueOf(register.getZipCode()));
-            user.setShippingAddress(shippingAdress);
+        if (register.getStreet() != null && !register.getStreet().equals("")) {
+            ShippingAdress homAdress = new ShippingAdress();
+            homAdress.setAdress(register.getStreet());
+            homAdress.setCity(register.getCity());
+            homAdress.setState(register.getState());
+            homAdress.setZipcode(Integer.valueOf(register.getZipCode()));
+            user.setHomeAddress(homAdress);
         }
 
         userRepo.save(user);
-        return "registration successful";
+
+        return new ResponseEntity<>("Registration Successful", HttpStatus.BAD_REQUEST);
+    }
+
+    public ResponseEntity<UserAccount> getUser(String username) {
+        return userRepo.findByUsername(username).isPresent() 
+        ?
+            new ResponseEntity<>(userRepo.findByUsername(username).get(), HttpStatus.OK)
+        :
+            new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 }

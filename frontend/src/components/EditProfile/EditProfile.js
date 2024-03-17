@@ -3,6 +3,9 @@ import './EditProfile.css'; // Assuming you have some CSS for styling
 import CardsContainer from './CardsContainer';
 
 function EditProfile() {
+
+  const [userData,setUserData] = useState();
+
   const [cards, setCards] = useState([
     // These are dummy payment cards.
     {cardType: "Visa", cardNumber: "69", expirationDate: "10/1984", billingAdress: "1111 Rock Dr"},
@@ -10,15 +13,9 @@ function EditProfile() {
   ]);
 
   useEffect(() => {
-    fetchCards();
-
-    //There is also going to be a function that gets the logged in user's info to put in the form fields below.
-    //What won't be filled is fields that have to do with payment cards (this includes billing address).
+    fetchUserData();
   }, []);
-  
-  const fetchCards = async () => {
-    //Implementation for getting the list of the user's payment cards from the database
-  }
+
 
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
@@ -33,9 +30,33 @@ function EditProfile() {
   const [cardType, setCardType] = useState('');
   const [zipCode, setZipCode] = useState();
   const [isAdmin, setIsAdmin] = useState(false);
-  // const [username, setUsername] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [confirmPassword, setConfirmPassword] = useState('');
+
+
+const fetchUserData = async () => {
+  const username = localStorage.getItem("username");
+  if (!username) {
+    console.error('Username is not stored in localStorage');
+    return;
+  }
+
+  const encodedUsername = encodeURIComponent(username);
+  const url = `http://localhost:8080/api/auth/get-user?username=${encodedUsername}`;
+
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      const userData = await response.json();
+      setUserData(userData);
+      setName(userData.name);
+    } else {
+      console.error('Error fetching user: HTTP status ', response.status);
+    }
+  } catch (err) {
+    console.error('Error fetching user:', err);
+  }
+}
+
+
 
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
@@ -95,6 +116,7 @@ function EditProfile() {
     <div class="container">
       <div className="edit-profile-container">
         <form className="edit-profile-form" onSubmit={handleProfileUpdate}>
+          {console.log(userData)}
           <h3>Edit User Information</h3>
           <div className="input-group">
             <label htmlFor="name">Name</label>
@@ -219,7 +241,7 @@ function EditProfile() {
           </div>
         </form>
       </div>
-    </div>
+    </div> 
   );
 }
 
