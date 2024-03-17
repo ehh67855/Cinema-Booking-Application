@@ -32,6 +32,7 @@ function Login() {
         navigate('/'); // Redirects to the root route without reloading the page
       }
     } else {
+      alert("Invalid credentials");
       console.error('Login failed:', response.status, response.statusText);
     }
 
