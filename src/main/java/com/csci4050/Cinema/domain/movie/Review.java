@@ -8,12 +8,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Setter
-@Getter
+@AllArgsConstructor @NoArgsConstructor @Setter @Getter @ToString
 public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

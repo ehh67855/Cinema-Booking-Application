@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
+import com.csci4050.Cinema.domain.movie.Booking;
 import com.csci4050.Cinema.domain.movie.MovieTime;
+import com.csci4050.Cinema.domain.movie.Ticket;
 
 // import org.springframework.security.core.GrantedAuthority;
 
@@ -59,4 +61,7 @@ public class UserAccount {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private ShippingAdress homeAddress;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userAccount")
+    private List<Ticket> tickets = new ArrayList<>();
 }
