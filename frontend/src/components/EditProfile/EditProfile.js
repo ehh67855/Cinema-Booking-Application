@@ -256,6 +256,7 @@ function EditProfile() {
         id="cardType"
         value={cardType}
         onChange={(e) => setCardType(e.target.value)}
+        required
       />
     </div>
     <div className="input-group">
@@ -266,6 +267,7 @@ function EditProfile() {
         id="cardNumber"
         value={cardNumber}
         onChange={(e) => setCardNumber(e.target.value)}
+        required
       />
     </div>
     <div className="input-group">
@@ -276,6 +278,7 @@ function EditProfile() {
         placeholder="MM/YY"
         value={cardExpiry}
         onChange={(e) => setCardExpiry(e.target.value)}
+        required
       />
     </div>
     <div className="input-group">
@@ -285,6 +288,7 @@ function EditProfile() {
         id="billingAddr"
         value={billingAddr}
         onChange={(e) => setBillingAddr(e.target.value)}
+        required
       />
     </div>
     <button type='submit'>Add Card</button>
