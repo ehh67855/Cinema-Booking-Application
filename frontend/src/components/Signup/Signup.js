@@ -26,7 +26,7 @@ function Signup() {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    if(!(cardNumber != "" && cardType != "" && cardExpiry != "" && billingAddr != "")) {
+    if(!(cardNumber == "" && cardType == "" && cardExpiry == "" && billingAddr == "") && !(cardNumber != "" && cardType != "" && cardExpiry != "" && billingAddr != "")) {
       alert("Please fill out all card fields when entering in new card.");
     } else if(password != confirmPassword) {
       alert("Password and Confirm Password do not match.");
@@ -47,18 +47,38 @@ function Signup() {
           password: password,
           isSubscribed: isSubscribed,
           phoneNumber: phoneNumber,
-          cardNumber: cardNumber,
-          cardExpiry: cardExpiry,
-          billingAddr: billingAddr,
           street: street,
           city: city,
           state: state,
-          cardType: cardType,
           zipCode: zipCode,
           email: email,
         })
       });
+
+      // creates a card for a user if they enter the info for a card
+      if(cardNumber != "") {
+        const cardResponse = await fetch('http://localhost:8080/api/auth/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            cardNumber: cardNumber,
+            cardType: cardType,
+            cardExpiry: cardExpiry,
+            billingAddr: billingAddr,
+          })
+        });
       
+        if(cardResponse.ok) {
+          const cardResponseBody = await cardResponse.text();
+          console.log(cardResponseBody);
+          console.log("Created new card");
+        } else {
+          console.error('Card info inputing failed:', cardResponse.status, cardResponse.statusText);
+        }
+      }
+
       if (response.ok) {
         const responseBody = await response.text();
         console.log(responseBody);
