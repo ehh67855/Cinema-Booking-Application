@@ -83,8 +83,6 @@ function Signup() {
         const responseBody = await response.text();
         console.log(responseBody);
         console.log("Created user:", name);
-        localStorage.setItem("userStatus","registered");
-        localStorage.setItem("username", email);
         navigate('/register-confirmation');
       } else {
         console.error('Signup failed:', response.status, response.statusText);
