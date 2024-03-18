@@ -74,8 +74,8 @@ function Login() {
           <br />
           <div id="login-buttons">
             <button type="submit" className="btn btn-primary login-button">Log In</button>
-            <a href="/register" formnovalidate="formnovalidate">
-              <button className="btn btn-primary login-button" formnovalidate="formnovalidate">Register</button>
+            <a href="/register">
+              <button type='button' className="btn btn-primary login-button">Register</button>
             </a>
           </div>
         </div>

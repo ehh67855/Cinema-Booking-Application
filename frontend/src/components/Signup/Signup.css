@@ -3,7 +3,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 200vh;
   width: 100vw;
   padding: 20px;
 }
@@ -65,4 +64,9 @@
 .login-link {
   text-align: center; /* Centers the login link */
   margin-top: 15px;
+}
+
+.required {
+  color: red;
+  text-align: left;
 }

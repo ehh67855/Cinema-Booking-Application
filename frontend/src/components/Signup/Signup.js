@@ -100,9 +100,10 @@ function Signup() {
 
       <form>
       <h3 className="category-label">Personal Information</h3>
+      <h6 className='required'>* Required</h6>
         <div className="input-group">
           <br/>
-          <label htmlFor="email">Email *</label>
+          <label htmlFor="email">Email <span className='required'>*</span></label>
           <input
             type="email"
             id="email"
@@ -114,7 +115,7 @@ function Signup() {
           
         </div>
         <div className="input-group">
-          <label htmlFor="phone">Phone Number *</label>
+          <label htmlFor="phone">Phone Number <span className='required'>*</span></label>
           <input
             type="tel"
             id="phone"
@@ -126,7 +127,7 @@ function Signup() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="name">Name *</label>
+          <label htmlFor="name">Name <span className='required'>*</span></label>
           <input
             type="text"
             id="name"
@@ -138,7 +139,7 @@ function Signup() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="password">Password *</label>
+          <label htmlFor="password">Password <span className='required'>*</span></label>
           <input
             type="password"
             id="password"
@@ -150,7 +151,7 @@ function Signup() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="confirm-password">Confirm Password *</label>
+          <label htmlFor="confirm-password">Confirm Password <span className='required'>*</span></label>
           <input
             type="password"
             id="confirm-password"
