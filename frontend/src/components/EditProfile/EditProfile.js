@@ -171,7 +171,7 @@ function EditProfile() {
               onChange={(e) => setName(e.target.value)}
               required
             />
-            <label htmlFor="password">New Password (leave blank to keep current)</label>
+            <label htmlFor="password">New Password (do not change to keep current)</label>
             <input
               type="password"
               id="password"
