@@ -24,6 +24,8 @@ function EditProfile() {
   const [cardType, setCardType] = useState('');
   const [zipCode, setZipCode] = useState();
   const [isAdmin, setIsAdmin] = useState(false);
+  const [enteredPreviousPassword, setEnteredPreviousPassword] = useState('');
+  const [previousPassword, setPreviousPassword] = useState('');
 
   const [cards, setCards] = useState(
     []
@@ -51,6 +53,7 @@ function EditProfile() {
         const userData = await response.json();
         setUserData(userData);
         setName(userData.name);
+        setPreviousPassword(userData.password);
         setIsSubscribed(userData.promotionsEnabled);
         setPhoneNumber(userData.phoneNumber);
         setStreet(userData.homeAddress.adress);
@@ -74,7 +77,7 @@ function EditProfile() {
 
   const handleCardUpdate = async (e) => {
     e.preventDefault();
-    if(cards.length == 3){
+    if(cards.length === 3){
       alert('A user can only have a max of 3 payment cards.');
     }else{
       try {
@@ -108,30 +111,57 @@ function EditProfile() {
   const handleProfileUpdate = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/api/editProfile', {
-        method: 'POST', //because this is an update to information in the database, should this be PUT?
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          username: name, 
-          password: password,
-          isSubscribed: isSubscribed,
-          phoneNumber: phoneNumber,
-          adress: street,
-          city: city,
-          state: state,
-          zipcode: zipCode,
-          isAdmin: isAdmin,
-        })
-      });
+      if(previousPassword.localeCompare(enteredPreviousPassword) !== 0){ // If the user has NOT entered their previous password correctly
+        const response = await fetch('http://localhost:8080/api/editProfile', {
+          method: 'POST', //because this is an update to information in the database, should this be PUT?
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: name,
+            isSubscribed: isSubscribed,
+            phoneNumber: phoneNumber,
+            adress: street,
+            city: city,
+            state: state,
+            zipcode: zipCode,
+            isAdmin: isAdmin,
+          })
+        });
 
-      if (response.ok) {
-        const responseBody = await response.text();
-        console.log(responseBody);
-        console.log('Profile updated with:', name, password, isSubscribed);
-      } else {
-        console.error('Profile edit failed:', response.status, response.statusText);
+        if (response.ok) {
+          const responseBody = await response.text();
+          console.log(responseBody);
+          console.log('Profile updated with:', name, password, isSubscribed);
+        } else {
+          console.error('Profile edit failed:', response.status, response.statusText);
+        }
+      }else{ // If the user has entered their previous password correctly
+        const response = await fetch('http://localhost:8080/api/editProfile', {
+          method: 'POST', //because this is an update to information in the database, should this be PUT?
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: name, 
+            password: password,
+            isSubscribed: isSubscribed,
+            phoneNumber: phoneNumber,
+            adress: street,
+            city: city,
+            state: state,
+            zipcode: zipCode,
+            isAdmin: isAdmin,
+          })
+        });
+
+        if (response.ok) {
+          const responseBody = await response.text();
+          console.log(responseBody);
+          console.log('Profile updated with:', name, password, isSubscribed);
+        } else {
+          console.error('Profile edit failed:', response.status, response.statusText);
+        }
       }
     
     } catch (error) {
@@ -171,10 +201,17 @@ function EditProfile() {
               onChange={(e) => setName(e.target.value)}
               required
             />
-            <label htmlFor="password">New Password (do not change to keep current)</label>
+            <label htmlFor="prePassword">Previous Password</label>
             <input
               type="password"
-              id="password"
+              id="prePassword"
+              value={enteredPreviousPassword}
+              onChange={(e) => setEnteredPreviousPassword(e.target.value)}
+            />
+            <label htmlFor="newPassword">New Password</label>
+            <input
+              type="password"
+              id="newPassword"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
