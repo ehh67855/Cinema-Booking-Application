@@ -57,9 +57,7 @@ function EditProfile() {
   }
 
   const [cards, setCards] = useState(
-    // This gets the user's real card(s)
-    userData.creditCards
-
+    []
     // [
     //   // These are dummy payment cards.
     //   {cardType: "Visa", cardNumber: "69", expirationDate: "10/1984", billingAdress: "1111 Rock Dr"},
@@ -67,6 +65,10 @@ function EditProfile() {
     //   {cardType: "Visa", cardNumber: 56, expirationDate: "10/1984", billingAdress: "1111 Rock Dr"}
     // ]
   );
+  // This gets the user's real card(s)
+  if(!(userData.creditCards == null)){
+    setCards(userData.creditCards);
+  }
 
   const handleCardUpdate = async (e) => {
     e.preventDefault();
