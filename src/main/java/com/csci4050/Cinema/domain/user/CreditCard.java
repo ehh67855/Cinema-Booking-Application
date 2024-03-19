@@ -24,11 +24,11 @@ public class CreditCard {
 
     private String cardType;
 
-    private LocalDate expirationDate;
+    private String expirationDate;
 
     private String billingAdress;
     
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_account_id") 
     private UserAccount userAccount;
 }

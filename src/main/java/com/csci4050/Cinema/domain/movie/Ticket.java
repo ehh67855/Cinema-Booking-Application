@@ -44,5 +44,5 @@ public class Ticket {
 }
 
 enum TicketType {
-    ADULT, CHILD
+    ADULT, CHILD,SENIOR
 }

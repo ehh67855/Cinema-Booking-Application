@@ -55,9 +55,28 @@ function Signup() {
         })
       });
 
+      if (response.ok) {
+        const responseBody = await response.text();
+        console.log(responseBody);
+        console.log("Created user:", name);
+        localStorage.setItem("userStatus","registered");
+        localStorage.setItem("username", email);
+        navigate('/register-confirmation');
+      } else {
+        console.error('Signup failed:', response.status, response.statusText);
+        alert("email already in use");
+      }
+  
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const postCard = async () =>  {
+    
       // creates a card for a user if they enter the info for a card
       if(cardNumber != "") {
-        const cardResponse = await fetch('http://localhost:8080/api/auth/register', {
+        const cardResponse = await fetch('http://localhost:8080/api/auth/create-card', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -78,22 +97,6 @@ function Signup() {
           console.error('Card info inputing failed:', cardResponse.status, cardResponse.statusText);
         }
       }
-
-      if (response.ok) {
-        const responseBody = await response.text();
-        console.log(responseBody);
-        console.log("Created user:", name);
-        localStorage.setItem("userStatus","registered");
-        localStorage.setItem("username", email);
-        navigate('/register-confirmation');
-      } else {
-        console.error('Signup failed:', response.status, response.statusText);
-        alert("email already in use");
-      }
-  
-    } catch (error) {
-      console.error(error);
-    }
   }
 
   return (
@@ -102,6 +105,7 @@ function Signup() {
 
       <form>
       <h3 className="category-label">Personal Information</h3>
+      <h6 className="required">All fields marked with an * are required</h6>
         <div className="input-group">
           <br/>
           <label htmlFor="email">Email *</label>

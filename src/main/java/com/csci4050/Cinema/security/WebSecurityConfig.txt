@@ -13,14 +13,10 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import com.csci4050.Cinema.service.CustomUserDetailsService;
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-
-    @Autowired
-    CustomUserDetailsService customUserDetailsService;
 
 	@Bean
 	SecurityFilterChain web(HttpSecurity http) throws Exception {
@@ -28,15 +24,9 @@ public class WebSecurityConfig {
             .csrf().disable()
             .cors().and()
             .authorizeHttpRequests(authorize -> authorize
-                .anyRequest().authenticated()
-            )
-            .formLogin()
-                .loginProcessingUrl("/api/login") // Define the login endpoint
-                .permitAll()
-                .and()
-            .logout()
-                .logoutUrl("/api/logout") // Define the logout endpoint
-                .permitAll();
+                .anyRequest()
+            );
+            
         return http.build();
     }
 
