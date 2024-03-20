@@ -17,6 +17,7 @@ import Login from './components/Login/Login';
 import SignupConfirmation from './components/Signup/SignupConfirmation';
 import EditProfile from './components/EditProfile/EditProfile';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
+import PasswordReset from './components/ForgotPassword/PasswordReset';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
       <Route path="/checkout" element={<Layout><Checkout /></Layout>} />
       <Route path="/orderConfirmation" element={<Layout><OrderConfirm /></Layout>} />
       <Route path="/forgot-password" element={<Layout><ForgotPassword></ForgotPassword></Layout>}/>
+      <Route path="/password-reset" element={<Layout><PasswordReset></PasswordReset></Layout>}/>
       <Route path="*" element={<Layout><NoPage /></Layout>} />
     </Routes>
   );

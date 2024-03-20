@@ -1,9 +1,12 @@
 package com.csci4050.Cinema.domain.user;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
+import org.springframework.context.annotation.Bean;
 import com.csci4050.Cinema.domain.movie.Booking;
 import com.csci4050.Cinema.domain.movie.MovieTime;
 import com.csci4050.Cinema.domain.movie.Ticket;
@@ -36,10 +39,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Entity
 @Getter @Setter @AllArgsConstructor @NoArgsConstructor @ToString
 @Table(name = "users")
 public class UserAccount {
+
+
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -49,6 +56,8 @@ public class UserAccount {
     private String username;
 
     private String password;
+
+    private String phoneNumber;
     
     private boolean enabled = true;
 
@@ -56,7 +65,7 @@ public class UserAccount {
 
     private boolean promotionsEnabled;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userAccount")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "userAccount")
     private List<CreditCard> creditCards; 
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -64,4 +73,5 @@ public class UserAccount {
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userAccount")
     private List<Ticket> tickets = new ArrayList<>();
+
 }

@@ -55,9 +55,28 @@ function Signup() {
         })
       });
 
+      if (response.ok) {
+        const responseBody = await response.text();
+        console.log(responseBody);
+        console.log("Created user:", name);
+        localStorage.setItem("userStatus","registered");
+        localStorage.setItem("username", email);
+        navigate('/register-confirmation');
+      } else {
+        console.error('Signup failed:', response.status, response.statusText);
+        alert("email already in use");
+      }
+  
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  const postCard = async () =>  {
+    
       // creates a card for a user if they enter the info for a card
       if(cardNumber != "") {
-        const cardResponse = await fetch('http://localhost:8080/api/auth/register', {
+        const cardResponse = await fetch('http://localhost:8080/api/auth/create-card', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -78,20 +97,6 @@ function Signup() {
           console.error('Card info inputing failed:', cardResponse.status, cardResponse.statusText);
         }
       }
-
-      if (response.ok) {
-        const responseBody = await response.text();
-        console.log(responseBody);
-        console.log("Created user:", name);
-        navigate('/register-confirmation');
-      } else {
-        console.error('Signup failed:', response.status, response.statusText);
-        alert("email already in use");
-      }
-  
-    } catch (error) {
-      console.error(error);
-    }
   }
 
   return (
@@ -100,10 +105,10 @@ function Signup() {
 
       <form>
       <h3 className="category-label">Personal Information</h3>
-      <h6 className='required'>* Required</h6>
+      <h6 className="required">All fields marked with an * are required</h6>
         <div className="input-group">
           <br/>
-          <label htmlFor="email">Email <span className='required'>*</span></label>
+          <label htmlFor="email">Email *</label>
           <input
             type="email"
             id="email"
@@ -115,7 +120,7 @@ function Signup() {
           
         </div>
         <div className="input-group">
-          <label htmlFor="phone">Phone Number <span className='required'>*</span></label>
+          <label htmlFor="phone">Phone Number *</label>
           <input
             type="tel"
             id="phone"
@@ -127,7 +132,7 @@ function Signup() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="name">Name <span className='required'>*</span></label>
+          <label htmlFor="name">Name *</label>
           <input
             type="text"
             id="name"
@@ -139,7 +144,7 @@ function Signup() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="password">Password <span className='required'>*</span></label>
+          <label htmlFor="password">Password *</label>
           <input
             type="password"
             id="password"
@@ -151,7 +156,7 @@ function Signup() {
         </div>
 
         <div className="input-group">
-          <label htmlFor="confirm-password">Confirm Password <span className='required'>*</span></label>
+          <label htmlFor="confirm-password">Confirm Password *</label>
           <input
             type="password"
             id="confirm-password"

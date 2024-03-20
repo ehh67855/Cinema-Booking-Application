@@ -64,6 +64,4 @@ public class Movie {
     @JoinColumn(name = "movie_id")
     private List<MovieTime> showings = new ArrayList<MovieTime>();
 
-    
-    
 }

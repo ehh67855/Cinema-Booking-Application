@@ -24,8 +24,8 @@ function EditProfile() {
   const [cardType, setCardType] = useState('');
   const [zipCode, setZipCode] = useState();
   const [isAdmin, setIsAdmin] = useState(false);
-  const [enteredPreviousPassword, setEnteredPreviousPassword] = useState('');
-  const [previousPassword, setPreviousPassword] = useState('');
+  const [currentPassword, setCurrentPassword] = useState('');
+
 
   const [cards, setCards] = useState(
     []
@@ -53,10 +53,9 @@ function EditProfile() {
         const userData = await response.json();
         setUserData(userData);
         setName(userData.name);
-        setPreviousPassword(userData.password);
         setIsSubscribed(userData.promotionsEnabled);
         setPhoneNumber(userData.phoneNumber);
-        setStreet(userData.homeAddress.adress);
+        setStreet(userData.homeAddress.address);
         setCity(userData.homeAddress.city);
         setState(userData.homeAddress.state);
         setZipCode(userData.homeAddress.zipcode);
@@ -73,101 +72,90 @@ function EditProfile() {
   }
 
   
+    const handleCardUpdate = async () => {
+      const email = localStorage.getItem("username");
+      if (!email) {
+          console.error("No email found in localStorage.");
+          return;
+      }
+
+      const cardData = {
+          email: email,
+          cardNumber: cardNumber, 
+          cardType: cardType, 
+          cardExpiry: cardExpiry, 
+          billingAddr: billingAddr, 
+      };
+
+      try {
+          const response = await fetch('http://localhost:8080/api/auth/create-card', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify(cardData)
+          });
+
+          if (response.ok) {
+              const responseBody = await response.json(); // Assuming JSON response
+              console.log("Card update successful:", responseBody);
+              // Handle successful response, maybe update UI or show success message
+          } else {
+              console.error('Failed to update card:', response.status, await response.text());
+              // Handle error response, maybe show error message to user
+          }
+      } catch (error) {
+          console.error('Error making request:', error);
+          // Handle network error, maybe show error message to user
+      }
+  };
+
+
+  
   
 
-  const handleCardUpdate = async (e) => {
-    e.preventDefault();
-    if(cards.length === 3){
-      alert('A user can only have a max of 3 payment cards.');
-    }else{
-      try {
-        const response = await fetch('http://localhost:8080/api/editProfile', {
-          method: 'POST', //because this is an update to information in the database, should this be PUT?
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            cardType: cardType,
-            cardNumber: cardNumber,
-            expirationDate: cardExpiry,
-            billingAdress: billingAddr,
-          })
-        });
-
-        if (response.ok) {
-          const responseBody = await response.text();
-          console.log(responseBody);
-          console.log('Card added:', cardType, cardNumber, cardExpiry, billingAddr);
-        } else {
-          console.error('Card addition failed:', response.status, response.statusText);
-        }
-      
-      } catch (error) {
-        console.error(error);
-      }
-    }
-  }
 
   const handleProfileUpdate = async (e) => {
-    e.preventDefault();
-    try {
-      if(previousPassword.localeCompare(enteredPreviousPassword) !== 0){ // If the user has NOT entered their previous password correctly
-        const response = await fetch('http://localhost:8080/api/editProfile', {
-          method: 'POST', //because this is an update to information in the database, should this be PUT?
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: name,
-            isSubscribed: isSubscribed,
-            phoneNumber: phoneNumber,
-            adress: street,
-            city: city,
-            state: state,
-            zipcode: zipCode,
-            isAdmin: isAdmin,
-          })
-        });
+  e.preventDefault();
 
-        if (response.ok) {
-          const responseBody = await response.text();
-          console.log(responseBody);
-          console.log('Profile updated with:', name, password, isSubscribed);
-        } else {
-          console.error('Profile edit failed:', response.status, response.statusText);
-        }
-      }else{ // If the user has entered their previous password correctly
-        const response = await fetch('http://localhost:8080/api/editProfile', {
-          method: 'POST', //because this is an update to information in the database, should this be PUT?
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            username: name, 
-            password: password,
-            isSubscribed: isSubscribed,
-            phoneNumber: phoneNumber,
-            adress: street,
-            city: city,
-            state: state,
-            zipcode: zipCode,
-            isAdmin: isAdmin,
-          })
-        });
-
-        if (response.ok) {
-          const responseBody = await response.text();
-          console.log(responseBody);
-          console.log('Profile updated with:', name, password, isSubscribed);
-        } else {
-          console.error('Profile edit failed:', response.status, response.statusText);
-        }
-      }
-    
-    } catch (error) {
-      console.error(error);
-    }
+  if ((password !== "") && (currentPassword !== userData.password)) {
+    alert("Input for current password is not correct. Could not update password");
   }
+
+  const payload = {
+    username: localStorage.getItem("username"), 
+    name: name,
+    newPassword: password,
+    phoneNumber: phoneNumber,
+    promotions: isSubscribed ? "true" : "false", 
+    street: street,
+    city: city,
+    state: state,
+    zipCode: zipCode,
+  };
+
+  try {
+    const response = await fetch('http://localhost:8080/api/auth/editProfile', {
+      method: 'POST', // or 'PUT' if your backend expects a PUT request for updates
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (response.ok) {
+      const responseBody = await response.text();
+      console.log(responseBody);
+      console.log('Profile updated successfully');
+    } else {
+      console.error('Profile edit failed:', response.status, response.statusText);
+    }
+
+  } catch (error) {
+    console.error('An error occurred:', error);
+  }
+}
+
 
   function AdminSet() {
     if(localStorage.getItem("userStatus") === "admin") {
@@ -192,6 +180,7 @@ function EditProfile() {
         <form className="edit-profile-form" onSubmit={handleProfileUpdate}>
           {console.log(userData)}
           <h3>Edit User Information</h3>
+          
           <div className="input-group">
             <label htmlFor="name">Name</label>
             <input
@@ -201,19 +190,19 @@ function EditProfile() {
               onChange={(e) => setName(e.target.value)}
               required
             />
-            <label htmlFor="prePassword">Previous Password</label>
+            <label htmlFor="password">New Password (leave blank to keep current)</label>
             <input
               type="password"
-              id="prePassword"
-              value={enteredPreviousPassword}
-              onChange={(e) => setEnteredPreviousPassword(e.target.value)}
-            />
-            <label htmlFor="newPassword">New Password</label>
-            <input
-              type="password"
-              id="newPassword"
+              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+            />
+            <label htmlFor="current-password">Current Password</label>
+            <input
+              type="password"
+              id="current-password"
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
             />
           </div>
           <div className="input-group">
