@@ -29,6 +29,7 @@ h6 {
 
 .seatLayoutImg:hover{
     cursor: pointer;
+    background-color: grey;
 }
 .submitCancelBtn {
     display: flex;
